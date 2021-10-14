@@ -1,0 +1,14 @@
+@import '~@tokens/variables';
+
+.loading-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: $TOKEN_Z_INDEX_BASE_OVERLAY;
+
+  &.component-loader {
+    position: absolute;
+  }
+}

@@ -1,0 +1,10 @@
+@import '~@tokens/variables.scss';
+
+.segment-auction-bids-wrapper {
+  height: 100%;
+  padding: $TOKEN_SIZE_BASE_XL;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

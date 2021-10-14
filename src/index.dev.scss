@@ -1,0 +1,50 @@
+//
+// DON'T INCLUDE THIS FILE INTO THE BUILD
+//
+
+@import '@tokens/variables.scss';
+@import '@tokens/assets-fonts.scss';
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('data:application/font-eot;charset=utf-8;base64,' + $ASSET_FONT_GRAPHIK_REGULAR_WEB_EOT);
+  src: url('data:application/font-woff;charset=utf-8;base64,' + $ASSET_FONT_GRAPHIK_REGULAR_WEB_WOFF)
+      format('woff'),
+    url('data:application/font-woff2;charset=utf-8;base64,' + $ASSET_FONT_GRAPHIK_REGULAR_WEB_WOFF_2)
+      format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('data:application/font-eot;charset=utf-8;base64,' + $ASSET_FONT_GRAPHIK_MEDIUM_WEB_EOT);
+  src: url('data:application/font-woff;charset=utf-8;base64,' + $ASSET_FONT_GRAPHIK_MEDIUM_WEB_WOFF)
+      format('woff'),
+    url('data:application/font-woff2;charset=utf-8;base64,' + $ASSET_FONT_GRAPHIK_MEDIUM_WEB_WOFF_2)
+      format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('data:application/font-eot;charset=utf-8;base64,' + $ASSET_FONT_GRAPHIK_BOLD_WEB_EOT);
+  src: url('data:application/font-woff;charset=utf-8;base64,' + $ASSET_FONT_GRAPHIK_BOLD_WEB_WOFF)
+      format('woff'),
+    url('data:application/font-woff2;charset=utf-8;base64,' + $ASSET_FONT_GRAPHIK_BOLD_WEB_WOFF_2)
+      format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

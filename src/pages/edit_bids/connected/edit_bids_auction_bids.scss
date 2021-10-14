@@ -1,0 +1,63 @@
+@import '~@tokens/variables.scss';
+
+.icon-filled-circle {
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+  color: $TOKEN_COLOR_BACKGROUND_ICON_CARET_DEFAULT;
+  background-color: $TOKEN_COLOR_BACKGROUND_ICON_CARET_DEFAULT;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.auction-bids-wrapper {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  main {
+    padding: $TOKEN_SIZE_BASE_XL;
+  }
+
+  .auction-bids-table {
+    background-color: initial;
+    white-space: normal;
+
+    td {
+      &:empty:not(.keep-border) {
+        border-bottom: $TOKEN_SIZE_BORDER_TABLE solid $TOKEN_COLOR_BORDER_TABLE;
+      }
+    }
+
+    th {
+      border-top: 2px solid $TOKEN_COLOR_BASE_STEEL;
+      border-bottom: 2px solid $TOKEN_COLOR_BASE_STEEL;
+    }
+  }
+
+  .auction-bids-table thead tr,
+  .auction-bids-table tbody tr {
+    display: block;
+  }
+
+  .auction-bids-table tbody td {
+    display: inline-block;
+    height: 47px;
+  }
+
+  .auction-bids-table tbody {
+    display: block;
+    overflow: auto;
+    height: 350px;
+    width: 100%;
+  }
+
+  .bid-accuracy-info {
+    background-color: $TOKEN_COLOR_BASE_LIGHT;
+    padding: 20px 0;
+    margin: 0;
+  }
+}

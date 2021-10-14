@@ -1,0 +1,11 @@
+@import '~@tokens/variables.scss';
+
+.grid-wrapper {
+  max-width: unset;
+
+  .right-pane {
+    position: relative;
+    height: 600px;
+    background-color: $TOKEN_COLOR_BASE_INTERACTIONS_10;
+  }
+}

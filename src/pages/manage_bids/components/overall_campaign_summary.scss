@@ -1,0 +1,12 @@
+@import '~@tokens/variables.scss';
+
+.overall-campaign-summary {
+  position: relative;
+  top: -$TOKEN_SIZE_BASE_XXL;
+  height: $TOKEN_SIZE_BASE_XXL;
+  width: 100%;
+  background-color: $TOKEN_COLOR_BASE_BRAND_PRIMARY;
+  span {
+    color: $TOKEN_COLOR_BASE_LIGHT;
+  }
+}

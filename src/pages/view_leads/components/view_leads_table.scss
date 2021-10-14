@@ -1,0 +1,14 @@
+@import '~@tokens/variables.scss';
+
+.view-leads-table {
+  th,
+  td:not(.error-message) {
+    width: 20%;
+  }
+  td.error-message {
+    width: 100%;
+    text-align: center;
+    background-color: $TOKEN_COLOR_BASE_BOX;
+  }
+  width: 100%;
+}

@@ -1,0 +1,12 @@
+@import '~@tokens/variables.scss';
+
+.lead-content-align {
+  span {
+    margin-top: $TOKEN_SIZE_BASE_SM;
+  }
+  .icon-custom-size {
+    width: 12px;
+    height: 12px;
+    mask-size: 12px 12px;
+  }
+}

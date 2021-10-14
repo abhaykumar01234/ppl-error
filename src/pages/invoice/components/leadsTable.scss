@@ -1,0 +1,9 @@
+@import '~@tokens/variables.scss';
+
+.leads-table-wrapper {
+  margin-top: $TOKEN_SIZE_BASE_MD;
+  margin-bottom: $TOKEN_SIZE_BASE_XL;
+  .leads-table-row td {
+    line-height: 33px;
+  }
+}

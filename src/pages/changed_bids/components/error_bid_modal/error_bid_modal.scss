@@ -1,0 +1,15 @@
+@import '~@tokens/variables.scss';
+
+.modal-wrapper {
+  border: 4px solid $TOKEN_COLOR_BASE_ALERT_ERROR;
+
+  .heading-label {
+    margin-left: 4px;
+    vertical-align: text-bottom;
+    color: $TOKEN_COLOR_BASE_ALERT_ERROR;
+  }
+}
+.footer-wrapper {
+  display: inline-block;
+  text-align: center;
+}

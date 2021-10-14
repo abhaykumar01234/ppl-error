@@ -1,0 +1,19 @@
+@import '~@tokens/variables.scss';
+
+.three-columns {
+  column-count: 3;
+}
+
+.scrollable-checkbox-view {
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.update-filters-box {
+  background-color: $TOKEN_COLOR_BASE_BOX;
+  padding: 25px;
+
+  .update-filters-btn {
+    background-color: transparent;
+  }  
+}

@@ -1,0 +1,9 @@
+@import '~@tokens/variables.scss';
+
+.details {
+  margin-top: $TOKEN_SIZE_BASE_SM;
+  min-width: 25%;
+  p {
+    margin: $TOKEN_SIZE_BASE_XXS 0;
+  }
+}

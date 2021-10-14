@@ -22,7 +22,7 @@ module.exports = merge(common, {
       cleanOnceBeforeBuildPatterns: ['**/*', path.join(__dirname, 'dist/**/*')]
     })
   ],
-  target: node,
+  target: 'node',
   externals: [
     nodeExternals({
       // this will include all assets from node modules, required to bundle the components

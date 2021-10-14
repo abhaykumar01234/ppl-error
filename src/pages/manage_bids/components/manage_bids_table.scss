@@ -1,0 +1,38 @@
+.manage-bids-table {
+  th,
+  td {
+    &:nth-child(2) {
+      text-align: left;
+    }
+    width: 12.5%;
+    &:nth-child(3),
+    &:nth-child(8),
+    &:nth-child(9) {
+      width: 8.33333%;
+    }
+  }
+}
+
+.icon-align {
+  vertical-align: middle;
+  margin-left: 5%;
+  margin-bottom: 0;
+}
+
+.loading-wrapper {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+.default-bid-link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+}
+
+.bid-value{
+  display: inline-block;
+  vertical-align: middle;
+}

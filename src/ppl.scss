@@ -1,0 +1,12 @@
+@import '~@tokens/variables.scss';
+
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.ppl-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}

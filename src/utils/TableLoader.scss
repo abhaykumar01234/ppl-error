@@ -1,0 +1,17 @@
+@import '~@tokens/variables.scss';
+
+.table-loader-row {
+  display: flex !important;
+  > td.table-loader-column {
+    border-bottom: none !important;
+    width: 100% !important;
+  }
+}
+
+.error-message {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $TOKEN_COLOR_BASE_BOX;
+}

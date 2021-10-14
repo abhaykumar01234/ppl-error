@@ -1,0 +1,7 @@
+[
+  { "label": "Date", "key": "billDate" },
+  { "label": "Activity", "key": "name" },
+  { "label": "Invoice", "key": "invoices" },
+  { "label": "Payments & Credits", "key": "paymentsAndCredits" },
+  { "label": "Balance", "key": "balance" }
+]

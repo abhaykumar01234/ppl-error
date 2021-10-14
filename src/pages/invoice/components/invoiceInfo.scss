@@ -1,0 +1,20 @@
+@import '~@tokens/variables.scss';
+
+.invoice-details-wrapper {
+  border-bottom: 2px solid $TOKEN_COLOR_BASE_RULES;
+  p {
+    margin: 0;
+  }
+}
+
+.invoice-details {
+  padding-bottom: $TOKEN_SIZE_BASE_LG;
+  margin-left: -$TOKEN_SIZE_BASE_XS;
+  .invoice-details-payment {
+    padding: $TOKEN_SIZE_BASE_MD;
+    background-color: $TOKEN_COLOR_BASE_INTERACTIONS_10;
+  }
+}
+.align-baseline {
+  align-items: baseline;
+}

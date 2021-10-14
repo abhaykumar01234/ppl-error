@@ -1,0 +1,22 @@
+@import '~@tokens/variables.scss';
+
+.pending-panel {
+  display: flex;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.pending-number {
+  background-color: $TOKEN_COLOR_BASE_BRAND_SECONDARY;
+  box-shadow: 0px 0px 0px 5px #003b60;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  line-height: 2;
+  border-radius: 50%;
+}
+
+.pending-text {
+  line-height: 2;
+  padding-left: 10px;
+}

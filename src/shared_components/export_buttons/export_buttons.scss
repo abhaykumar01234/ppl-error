@@ -1,0 +1,12 @@
+@import '@tokens/variables.scss';
+
+.export-wrapper {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.button-wrapper {
+  :nth-child(2) {
+    margin-left: $TOKEN_SIZE_BASE_MD;
+  }
+}

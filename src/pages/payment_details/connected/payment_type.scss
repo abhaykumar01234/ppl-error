@@ -1,0 +1,14 @@
+@import '~@tokens/variables.scss';
+
+.header {
+  margin: $TOKEN_SIZE_MARGIN_TITLE;
+
+  .title {
+    margin: $TOKEN_SIZE_MARGIN_HEADING_LG;
+  }
+}
+
+.detailWrapper {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}

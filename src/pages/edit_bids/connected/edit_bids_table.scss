@@ -1,0 +1,56 @@
+@import '~@tokens/variables.scss';
+
+.edit-bids-table {
+  white-space: normal;
+
+  .no-outline {
+    outline: none;
+  }
+
+  tr {
+    border: unset !important;
+  }
+
+  th,
+  td {
+    display: table-cell !important;
+  }
+
+  thead {
+    th {
+      border-top: 2px solid $TOKEN_COLOR_BASE_STEEL;
+      border-bottom: 2px solid $TOKEN_COLOR_BASE_STEEL;
+    }
+  }
+
+  tbody.table-row-accordion {
+    border-bottom: none;
+
+    td {
+      border-bottom: $TOKEN_SIZE_BORDER_TABLE solid $TOKEN_COLOR_BORDER_TABLE;
+    }
+  }
+
+  .table-row-accordion tr:first-child > td:first-child {
+    border-bottom: $TOKEN_SIZE_BORDER_TABLE solid $TOKEN_COLOR_BORDER_TABLE;
+  }
+}
+
+.icon-filled-circle {
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+  color: $TOKEN_COLOR_BASE_ALERT_ERROR;
+  background-color: $TOKEN_COLOR_BASE_ALERT_ERROR;
+  border-radius: 50%;
+}
+
+.icon-hollow-circle {
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+  color: transparent;
+  background-color: transparent;
+  border: 2px solid $TOKEN_COLOR_BASE_ALERT_ERROR;
+  border-radius: 50%;
+}
