@@ -1,0 +1,13 @@
+{
+  "baseUrl": "http://localhost:4002/",
+  "video": false,
+  "testFiles": "**/__specs__/*.spec.js",
+  "integrationFolder": "./src/pages/",
+  "retries": {
+    "runMode": 2,
+    "openMode": 2
+  },
+  "env": {
+    "apiUrl": "http://localhost:3000"
+  }
+}
