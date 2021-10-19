@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import s from './payment_details.module.scss';
-import cx from 'classnames'
 
 const PaymentDetails = ({ vendorName, paymentInfo }) => {
   const { contact, vendorId, creationDay, name } = paymentInfo || {};
 
   return (
     <section className="gdm-flex">
-      <address className={cx("gdm-paragraph-sm", s.details)}>
+      <address className={cx('gdm-paragraph-sm', s.details)}>
         <p>Software Advice</p>
         <p>P.O. Box 733143</p>
         <p>Dallas, TX 75373-3143</p>
       </address>
-      <div className={cx("gdm-paragraph-sm", s.details)}>
+      <div className={cx('gdm-paragraph-sm', s.details)}>
         <p>Received From: {vendorName || ''}</p>
         <p>Business Contact: {contact ? contact.fullName : ''}</p>
         <p>Customer #: {vendorId || ''}</p>
@@ -32,9 +32,9 @@ PaymentDetails.propTypes = {
     creationDay: PropTypes.string,
     name: PropTypes.string,
     contact: PropTypes.shape({
-      fullName: PropTypes.string,
-    }),
-  }).isRequired,
+      fullName: PropTypes.string
+    })
+  }).isRequired
 };
 
 export default PaymentDetails;

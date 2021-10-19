@@ -4,7 +4,7 @@ export default function (product) {
   return function setSelectedProduct(dispatch) {
     dispatch({
       type: SET_SELECTED_PRODUCT,
-      payload: product,
+      payload: product
     });
   };
 }

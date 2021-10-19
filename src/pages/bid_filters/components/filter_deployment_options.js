@@ -9,7 +9,7 @@ const FilterDeploymentOptions = ({ deploymentOptions }) => {
 
   return (
     <div className="gdm-col">
-      {deploymentOptions.map((deploymentOption) => (
+      {deploymentOptions.map(deploymentOption => (
         <div key={deploymentOption.id}>
           <CheckboxView
             label={deploymentOption.name}
@@ -24,11 +24,11 @@ const FilterDeploymentOptions = ({ deploymentOptions }) => {
 };
 
 FilterDeploymentOptions.defaultProps = {
-  deploymentOptions: [],
+  deploymentOptions: []
 };
 
 FilterDeploymentOptions.propTypes = {
-  deploymentOptions: PropTypes.arrayOf(PropTypes.object),
+  deploymentOptions: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default FilterDeploymentOptions;

@@ -4,7 +4,7 @@ export default function (products) {
   return function setProducts(dispatch) {
     dispatch({
       type: SET_PRODUCTS,
-      payload: products,
+      payload: products
     });
   };
 }

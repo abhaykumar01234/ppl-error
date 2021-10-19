@@ -7,12 +7,13 @@ export default (state = {}, action) => {
     case SET_CHANGED_BID:
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
-    case DELETE_CHANGED_BID:
+    case DELETE_CHANGED_BID: {
       const newChangedBids = { ...state };
       delete newChangedBids[action.key];
       return newChangedBids;
+    }
     case CLEAR_CHANGED_BID:
       return {};
     default:

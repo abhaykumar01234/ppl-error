@@ -6,7 +6,7 @@ import TableLoader from '@ppl/utils/TableLoader';
 import s from './leadsTable.module.scss';
 
 const LeadsTable = ({ leads, isLoading }) => (
-  <div className={s["leads-table-wrapper"]}>
+  <div className={s['leads-table-wrapper']}>
     <table className="gdm-table gdm-table-alternating gdm-table-inputs gdm-table-reset gdm-text-center gdm-w-24">
       <thead>
         <tr>
@@ -19,8 +19,8 @@ const LeadsTable = ({ leads, isLoading }) => (
       </thead>
       <tbody>
         {leads.length ? (
-          leads.map((lead) => (
-            <tr key={lead.leadId} className={s["leads-table-row"]}>
+          leads.map(lead => (
+            <tr key={lead.leadId} className={s['leads-table-row']}>
               <td className="gdm-w-2 gdm-text-left">{formatDate(lead.dateSent)}</td>
               <td className="gdm-w-8 gdm-text-left" title={lead.company}>
                 <Link className="gdm-link-default" to={`/vp/ppl/leads/${lead.leadId}`}>
@@ -35,7 +35,11 @@ const LeadsTable = ({ leads, isLoading }) => (
             </tr>
           ))
         ) : (
-          <TableLoader colSpan={12} isError={!isLoading} errorMessage="You don't have any leads for this invoice." />
+          <TableLoader
+            colSpan={12}
+            isError={!isLoading}
+            errorMessage="You don't have any leads for this invoice."
+          />
         )}
       </tbody>
     </table>
@@ -43,7 +47,7 @@ const LeadsTable = ({ leads, isLoading }) => (
 );
 
 LeadsTable.defaultProps = {
-  leads: [],
+  leads: []
 };
 
 LeadsTable.propTypes = {
@@ -58,9 +62,9 @@ LeadsTable.propTypes = {
       leadId: PropTypes.number,
       size: PropTypes.string,
       status: PropTypes.string,
-      systemName: PropTypes.string,
+      systemName: PropTypes.string
     })
-  ),
+  )
 };
 
 export default LeadsTable;

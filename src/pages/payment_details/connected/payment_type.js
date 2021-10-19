@@ -6,17 +6,17 @@ import withLoader from '@ppl/utils/with_loader';
 import { VpComponents } from '@vp-components';
 import ExportButtons from '@ppl/shared_components/export_buttons';
 import { prefixDate } from '@ppl/utils/date';
+import cx from 'classnames';
 import PaymentView from '../components/payment_pdf_view';
 import PaymentDetails from '../components/payment_details';
 import s from './payment_type.module.scss';
-import cx from 'classnames'
 
 const PaymentType = () => {
   const { billId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const [paymentInfo, setPaymentInfo] = useState({});
-  const { name: vendorName = '' } = useSelector((state) => state.vendor);
+  const { name: vendorName = '' } = useSelector(state => state.vendor);
 
   const isDetailAvailable = Object.keys(paymentInfo).length > 0;
 
@@ -27,7 +27,10 @@ const PaymentType = () => {
         setPaymentInfo(payment.data);
       } else {
         if (payment && payment.status === 401) {
-          VpComponents.windowFlashAdd(`You are not authorized to view the Invoice id:${billId}`, 'error');
+          VpComponents.windowFlashAdd(
+            `You are not authorized to view the Invoice id:${billId}`,
+            'error'
+          );
         } else {
           VpComponents.windowFlashAdd(`The Invoice with id:${billId} does not exist.`, 'error');
         }
@@ -52,18 +55,20 @@ const PaymentType = () => {
   return (
     <div>
       <header className={s.header}>
-        <h1 className={cx("gdm-title", s.title)}>
-          PPL Billing History
-        </h1>
+        <h1 className={cx('gdm-title', s.title)}>PPL Billing History</h1>
         <Link to="/vp/ppl/billing-history" className="gdm-link-default" data-cy="invoices-link">
           Go back to PPL Billing History
         </Link>
       </header>
       <br />
-      {isDetailAvailable && <h3 className="gdm-heading-lg">Receipt for Payment({paymentInfo.creationDay})</h3>}
+      {isDetailAvailable && (
+        <h3 className="gdm-heading-lg">Receipt for Payment({paymentInfo.creationDay})</h3>
+      )}
       <div className={s.detailWrapper}>
         <PaymentDetails vendorName={vendorName} paymentInfo={paymentInfo} />
-        {paymentInfo && paymentInfo.billId && vendorName && <ExportButtons>{pdfButton}</ExportButtons>}
+        {paymentInfo && paymentInfo.billId && vendorName && (
+          <ExportButtons>{pdfButton}</ExportButtons>
+        )}
       </div>
     </div>
   );

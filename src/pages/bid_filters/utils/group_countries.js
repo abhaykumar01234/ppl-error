@@ -14,7 +14,7 @@ function groupCountries(countries) {
   const regionByID1 = cloneDeep(regionByIDs);
   // eslint-disable-next-line camelcase
   countries.forEach(({ id, name, is_active, region_ids }) => {
-    region_ids.forEach((rid) => {
+    region_ids.forEach(rid => {
       const temp = regionByID1[rid];
       temp.countries = [
         ...temp.countries,
@@ -22,8 +22,8 @@ function groupCountries(countries) {
           id: String(id),
           name,
           isActive: is_active,
-          otherParentIDs: region_ids.filter(curId => curId !== rid).map(r => String(r)),
-        },
+          otherParentIDs: region_ids.filter(curId => curId !== rid).map(r => String(r))
+        }
       ];
     });
   });

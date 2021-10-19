@@ -7,7 +7,7 @@ import { Page, Image, Text, View, Document, StyleSheet } from '@react-pdf/render
 const styles = StyleSheet.create({
   shared: {
     fontSize: 10,
-    fontWeight: 800,
+    fontWeight: 800
   },
   header: {
     display: 'flex',
@@ -17,35 +17,35 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 15,
     borderBottom: 1,
-    borderBottomColor: COLOR_BASE_BRAND_PRIMARY,
+    borderBottomColor: COLOR_BASE_BRAND_PRIMARY
   },
   logoWrapper: {
-    width: 250,
+    width: 250
   },
   main: {
     paddingHorizontal: 40,
-    paddingVertical: 15,
+    paddingVertical: 15
   },
   tableWrapper: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   tableCell: {
     paddingHorizontal: 5,
-    paddingVertical: 6,
+    paddingVertical: 6
   },
   dateColumn: {
-    flexBasis: '15%',
+    flexBasis: '15%'
   },
   leadColumn: {
-    flexBasis: '45%',
+    flexBasis: '45%'
   },
   sizeColumn: {
-    flexBasis: '30%',
+    flexBasis: '30%'
   },
   priceColumn: {
     flexBasis: '10%',
-    textAlign: 'right',
+    textAlign: 'right'
   },
   footer: {
     position: 'absolute',
@@ -56,13 +56,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 20,
     borderTop: 1,
-    borderTopColor: COLOR_BASE_BRAND_PRIMARY,
-  },
+    borderTopColor: COLOR_BASE_BRAND_PRIMARY
+  }
 });
 
 const toDateString = (date, opts = { separator: '/' }) => {
   if (!date || !date instanceof Date) return date;
-  return ('0' + (date.getMonth() + 1)).slice(-2) + opts.separator + ('0' + date.getDate()).slice(-2) + opts.separator + date.getFullYear();
+  return (
+    `0${date.getMonth() + 1}`.slice(-2) +
+    opts.separator +
+    `0${date.getDate()}`.slice(-2) +
+    opts.separator +
+    date.getFullYear()
+  );
 };
 
 const LeadsDocument = ({ leads }) => {
@@ -85,8 +91,16 @@ const LeadsDocument = ({ leads }) => {
               <Text style={[styles.priceColumn, styles.tableCell]}>Price</Text>
             </View>
             {leadsArr.map(({ leadId, dateSent, company, size, amount }, index) => (
-              <View key={leadId} style={[styles.tableWrapper, { backgroundColor: index % 2 === 0 ? COLOR_BASE_BOX : COLOR_BASE_LIGHT }]}>
-                <Text style={[styles.dateColumn, styles.tableCell]}>{toDateString(new Date(dateSent))}</Text>
+              <View
+                key={leadId}
+                style={[
+                  styles.tableWrapper,
+                  { backgroundColor: index % 2 === 0 ? COLOR_BASE_BOX : COLOR_BASE_LIGHT }
+                ]}
+              >
+                <Text style={[styles.dateColumn, styles.tableCell]}>
+                  {toDateString(new Date(dateSent))}
+                </Text>
                 <Text style={[styles.leadColumn, styles.tableCell]}>{company}</Text>
                 <Text style={[styles.sizeColumn, styles.tableCell]}>{size}</Text>
                 <Text style={[styles.priceColumn, styles.tableCell]}>{amount}</Text>
@@ -103,7 +117,7 @@ const LeadsDocument = ({ leads }) => {
 };
 
 LeadsDocument.propTypes = {
-  leads: PropTypes.shape([]).isRequired,
+  leads: PropTypes.shape([]).isRequired
 };
 
 export default LeadsDocument;

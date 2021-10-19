@@ -4,7 +4,7 @@ export default function (market) {
   return function setSelectedMarket(dispatch) {
     dispatch({
       type: SET_SELECTED_MARKET,
-      payload: market,
+      payload: market
     });
   };
 }

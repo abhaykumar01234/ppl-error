@@ -6,23 +6,26 @@ import { pdf } from '@react-pdf/renderer';
 import { AlertMessage, Button } from '@arubaito';
 import { blobToFile } from '@ppl/utils/download';
 import setIsLoading from '@ppl/redux/actions/set_is_loading';
+import cx from 'classnames';
 import s from './export_buttons.module.scss';
-import cx from 'classnames'
 
 const ExportButtons = ({ children }) => {
   const [error, setError] = useState({ isError: false, message: null });
 
   return (
     <div className="gdm-m-bottom-md">
-      <div className={cx("gdm-flex gdm-m-top-md", s["export-wrapper"])}>
-        <div className={cx("gdm-flex gdm-m-bottom-sm", s["button-wrapper"])}>
+      <div className={cx('gdm-flex gdm-m-top-md', s['export-wrapper'])}>
+        <div className={cx('gdm-flex gdm-m-bottom-sm', s['button-wrapper'])}>
           {Children.map(children, (child, i) => (
             <div key={i}>{cloneElement(child, { setError })}</div>
           ))}
         </div>
         <div>
           {error.isError && (
-            <AlertMessage status="error">{error.message || 'We have experienced an error while downloading CSV/PDF, please try again.'}</AlertMessage>
+            <AlertMessage status="error">
+              {error.message ||
+                'We have experienced an error while downloading CSV/PDF, please try again.'}
+            </AlertMessage>
           )}
         </div>
       </div>
@@ -43,7 +46,7 @@ const PDF = ({ children, disabled, documentView, fileName, setError, errorMessag
       .then(() => {
         setError({ isError: false, message: null });
       })
-      .catch((err) => {
+      .catch(() => {
         setError({ isError: true, message: errorMessage });
       })
       .finally(() => {
@@ -82,7 +85,7 @@ CSV.propTypes = {
   headers: PropTypes.arrayOf(
     PropTypes.exact({
       key: PropTypes.string,
-      label: PropTypes.string,
+      label: PropTypes.string
     })
   ).isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -90,12 +93,12 @@ CSV.propTypes = {
   children: PropTypes.string.isRequired,
   setError: PropTypes.func,
   disabled: PropTypes.bool,
-  errorMessage: PropTypes.string,
+  errorMessage: PropTypes.string
 };
 CSV.defaultProps = {
   disabled: false,
   errorMessage: null,
-  setError: () => {},
+  setError: () => {}
 };
 
 PDF.propTypes = {
@@ -104,16 +107,16 @@ PDF.propTypes = {
   setError: PropTypes.func,
   documentView: PropTypes.node.isRequired,
   errorMessage: PropTypes.string,
-  disabled: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 PDF.defaultProps = {
   disabled: false,
   errorMessage: null,
-  setError: () => {},
+  setError: () => {}
 };
 
 ExportButtons.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired
 };
 
 ExportButtons.CSV = CSV;

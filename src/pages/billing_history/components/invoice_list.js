@@ -21,7 +21,7 @@ const InvoiceList = ({ status, invoiceList }) => {
             errorMessage={!status.isError && isEmptyInvoiceList && NO_DATA_ERR_MSG}
           />
         ) : (
-          invoiceList.map((invoice) => <InvoiceRow key={invoice.billId} invoice={invoice} />)
+          invoiceList.map(invoice => <InvoiceRow key={invoice.billId} invoice={invoice} />)
         )}
       </InvoiceTable>
     </div>
@@ -32,7 +32,7 @@ InvoiceList.propTypes = {
   status: PropTypes.shape({
     isLoading: PropTypes.bool,
     isSuccess: PropTypes.bool,
-    isError: PropTypes.bool,
+    isError: PropTypes.bool
   }),
   invoiceList: PropTypes.arrayOf(
     PropTypes.shape({
@@ -40,9 +40,9 @@ InvoiceList.propTypes = {
       billId: PropTypes.number,
       invoiceMonth: PropTypes.number,
       invoiceYear: PropTypes.number,
-      name: PropTypes.string,
+      name: PropTypes.string
     })
-  ),
+  )
 };
 
 InvoiceList.defaultProps = {
@@ -53,9 +53,9 @@ InvoiceList.defaultProps = {
       billId: 0,
       invoiceMonth: 0,
       invoiceYear: 0,
-      name: '',
-    },
-  ],
+      name: ''
+    }
+  ]
 };
 
 export default InvoiceList;

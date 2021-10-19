@@ -25,7 +25,7 @@ const Invoice = () => {
     const fetchInvoiceData = async () => {
       try {
         const promiseList = [
-          authFetch(`/invoices/${id}/payment`).then((response) => {
+          authFetch(`/invoices/${id}/payment`).then(response => {
             if (!response.ok) {
               if (response.status === 404) {
                 VpComponents.windowFlashAdd(`The Invoice with id:${id} does not exist.`, 'error');
@@ -34,7 +34,7 @@ const Invoice = () => {
             }
             return response.json();
           }),
-          dispatch(fetchVendor()),
+          dispatch(fetchVendor())
         ];
 
         const [paymentResponse] = await Promise.all(promiseList);
@@ -59,9 +59,11 @@ const Invoice = () => {
       try {
         const queryParams = {
           month: invoice.invoiceMonth,
-          year: invoice.invoiceYear,
+          year: invoice.invoiceYear
         };
-        const leadsData = await authFetch(`/leads/billing_report_by_month?${VpComponents.toQueryString(queryParams)}`).then((response) => {
+        const leadsData = await authFetch(
+          `/leads/billing_report_by_month?${VpComponents.toQueryString(queryParams)}`
+        ).then(response => {
           setIsLoading(false);
           if (!response.ok) throw new Error(response.statusText);
           return response.json();
@@ -81,12 +83,12 @@ const Invoice = () => {
   const downloadInvoicePDF = async () => {
     try {
       setIsLoading(true);
-      const response = await authFetch(`/invoices/${id}`)
+      const response = await authFetch(`/invoices/${id}`);
       if (!response.ok) throw new Error(response.statusText);
       const { url } = await response.json();
       if (!url) throw new Error('Invalid URL');
       window.open(url);
-    } catch(e) {
+    } catch (e) {
       setErrorMessage(e.message);
     } finally {
       setIsLoading(false);
@@ -99,13 +101,16 @@ const Invoice = () => {
     <div className="gdm-grid gdm-p-none">
       {isPartial && (
         <FlashMessage status="notification">
-          This is not your final bill. This page does not reflect any potential refunds. Please wait until after the 8th of the month to access and
-          pay your bill.
+          This is not your final bill. This page does not reflect any potential refunds. Please wait
+          until after the 8th of the month to access and pay your bill.
         </FlashMessage>
       )}
       <div className="gdm-m-top-md gdm-col-6">
         <h1 className="gdm-title gdm-m-bottom-none">PPL Billing History</h1>
-        <Link className="gdm-link-default default-bid-link gdm-block gdm-m-top-xs" to="/vp/ppl/billing-history">
+        <Link
+          className="gdm-link-default default-bid-link gdm-block gdm-m-top-xs"
+          to="/vp/ppl/billing-history"
+        >
           Go Back to PPL Billing History
         </Link>
         <h3 className="gdm-heading-lg gdm-m-top-sm">{invoice.name}</h3>

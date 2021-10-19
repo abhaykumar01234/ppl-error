@@ -4,7 +4,7 @@ export default function (vendor) {
   return function setVendor(dispatch) {
     dispatch({
       type: SET_VENDOR,
-      payload: vendor,
+      payload: vendor
     });
   };
 }

@@ -18,13 +18,15 @@ export default () => (dispatch, getState) => {
       /* If current selected bid is a 'size' type for which update was called,
        then get the latest value from 'sizes' redux state and update.
        */
-      const size = (sizes[productId] || []).find(sizeData => Number(sizeData.id) === Number(bid.id)) || {};
+      const size =
+        (sizes[productId] || []).find(sizeData => Number(sizeData.id) === Number(bid.id)) || {};
       selectedBid.bid.bidAmount = size.bidAmount || selectedBid.bid.bidAmount;
     } else {
       /* Current selected bid is a 'segment' type for which update was called,
         get the latest value from 'segments' redux state and update.
        */
-      const segment = segments[sizeBid.id].find(segmentData => Number(segmentData.id) === Number(bid.id)) || {};
+      const segment =
+        segments[sizeBid.id].find(segmentData => Number(segmentData.id) === Number(bid.id)) || {};
       selectedBid.bid.bid = segment.bid || selectedBid.bid.bid;
     }
   }

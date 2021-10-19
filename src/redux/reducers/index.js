@@ -34,5 +34,5 @@ export default {
   selectedBid,
   auctionBids,
   isLoading,
-  alerts,
+  alerts
 };

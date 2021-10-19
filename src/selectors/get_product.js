@@ -7,5 +7,5 @@ export function getSelectedProduct(products, productId) {
 export default createSelector(
   state => state.products,
   (_, productId) => productId,
-  getSelectedProduct,
+  getSelectedProduct
 );

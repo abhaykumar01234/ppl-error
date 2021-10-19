@@ -1,7 +1,7 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import authFetch from '@ppl/redux/actions/auth_fetch';
 
-const getFetchOptions = (opts) => {
+const getFetchOptions = opts => {
   const fetchOption = { url: '', option: {} };
 
   if (typeof opts === 'string') {
@@ -39,6 +39,7 @@ const useAsyncFetch = (fetchOption, immediate = true) => {
     };
 
     return asyncFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchOption]);
 
   useEffect(() => {
@@ -48,7 +49,10 @@ const useAsyncFetch = (fetchOption, immediate = true) => {
   }, [execute, immediate]);
 
   return {
-    execute, status, data, error,
+    execute,
+    status,
+    data,
+    error
   };
 };
 

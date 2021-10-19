@@ -1,7 +1,8 @@
 import setProducts from './set_products';
 import authFetch from './auth_fetch';
 
-const productsSort = (p1, p2) => (p1.productLabel.toLowerCase() < p2.productLabel.toLowerCase() ? -1 : 1);
+const productsSort = (p1, p2) =>
+  p1.productLabel.toLowerCase() < p2.productLabel.toLowerCase() ? -1 : 1;
 
 export default () => async (dispatch, getState) => {
   const { products } = getState();

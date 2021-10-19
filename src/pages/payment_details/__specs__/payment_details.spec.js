@@ -33,7 +33,9 @@ describe('Payment Details page', () => {
         cy.wait('@getPaymentACH').then(() => {
           const paymentType = pname.split('Payment - ')[1];
           cy.get('p:contains("Payment Method")').contains(paymentType).should('be.visible');
-          cy.get('h3.gdm-heading-lg').contains(`Receipt for Payment(${creationDay})`).should('be.visible');
+          cy.get('h3.gdm-heading-lg')
+            .contains(`Receipt for Payment(${creationDay})`)
+            .should('be.visible');
           cy.get('p:contains("Date")').contains(creationDay).should('be.visible');
           cy.get('p:contains("Customer #")').contains(vendorId).should('be.visible');
           cy.get('p:contains("Received From")').contains(name).should('be.visible');
@@ -74,7 +76,7 @@ describe('Payment Details page', () => {
       cy.get('@loader').should('be.visible');
       cy.wait(2000);
       const downloadsFolder = Cypress.config('downloadsFolder');
-      cy.task('readdir', downloadsFolder).then((file) => {
+      cy.task('readdir', downloadsFolder).then(file => {
         expect(file[0]).to.match(new RegExp('payment_receipt.pdf$'));
       });
     });

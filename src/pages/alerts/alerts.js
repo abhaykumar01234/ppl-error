@@ -11,7 +11,7 @@ export default function Alerts() {
 
   function handleClosed() {
     dispatch({
-      type: SHIFT_ALERT,
+      type: SHIFT_ALERT
     });
   }
 

@@ -10,13 +10,15 @@ export default () => async (dispatch, getState) => {
   const response = await authFetch('/markets');
   if (!response.ok) throw new Error(response.statusText);
 
-  const marketList = await response.json() || [];
-  const filteredMarkets = marketList.filter(m => products.some(p => Number(p.marketId) === m.marketId));
+  const marketList = (await response.json()) || [];
+  const filteredMarkets = marketList.filter(m =>
+    products.some(p => Number(p.marketId) === m.marketId)
+  );
   filteredMarkets.sort(marketsSort);
 
   dispatch({
     type: SET_MARKETS,
-    payload: filteredMarkets,
+    payload: filteredMarkets
   });
 
   return null;

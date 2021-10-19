@@ -3,8 +3,8 @@ import PropType from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { CLEAR_CHANGED_BID } from '@ppl/redux/reducers/changed_bids_reducer';
 import { Button, Modal } from '@arubaito';
-import s from './error_bid_modal.module.scss';
 import cx from 'classnames';
+import s from './error_bid_modal.module.scss';
 
 export default function ErrorBidModal({ onClosed }) {
   const dispatch = useDispatch();
@@ -12,19 +12,20 @@ export default function ErrorBidModal({ onClosed }) {
   return (
     <Modal open onClosed={onClosed}>
       {close => (
-        <div className={s["modal-wrapper"]}>
+        <div className={s['modal-wrapper']}>
           <Modal.Header>
             <span className="gdm-icon gdm-icon-md gdm-icon-alert-error" />
-            <span className={cx("gdm-heading-lg", s["heading-label"])}>Unsaved Bids</span>
+            <span className={cx('gdm-heading-lg', s['heading-label'])}>Unsaved Bids</span>
             <Modal.Close onClick={close} />
           </Modal.Header>
           <Modal.Body>
             <p className="gdm-paragraph-sm">
-              We were unable to save your selected bids. Select Edit Bids below and re-enter your bid adjustments.
+              We were unable to save your selected bids. Select Edit Bids below and re-enter your
+              bid adjustments.
             </p>
           </Modal.Body>
           <Modal.Footer>
-            <div className={s["footer-wrapper"]}>
+            <div className={s['footer-wrapper']}>
               <Button className="gdm-m-top-sm" variant="primary" onClick={close}>
                 Edit Bids
               </Button>
@@ -32,8 +33,14 @@ export default function ErrorBidModal({ onClosed }) {
                 role="button"
                 tabIndex="0"
                 className="gdm-link-dark gdm-m-top-sm"
-                onKeyDown={() => { dispatch({ type: CLEAR_CHANGED_BID }); close(); }}
-                onClick={() => { dispatch({ type: CLEAR_CHANGED_BID }); close(); }}
+                onKeyDown={() => {
+                  dispatch({ type: CLEAR_CHANGED_BID });
+                  close();
+                }}
+                onClick={() => {
+                  dispatch({ type: CLEAR_CHANGED_BID });
+                  close();
+                }}
               >
                 Cancel changes
               </div>
@@ -46,9 +53,9 @@ export default function ErrorBidModal({ onClosed }) {
 }
 
 ErrorBidModal.propTypes = {
-  onClosed: PropType.func,
+  onClosed: PropType.func
 };
 
 ErrorBidModal.defaultProps = {
-  onClosed: () => {},
+  onClosed: () => {}
 };

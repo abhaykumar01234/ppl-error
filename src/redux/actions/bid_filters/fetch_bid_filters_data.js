@@ -12,7 +12,7 @@ export default () => async (dispatch, getState) => {
     await dispatch(fetchProducts());
     await dispatch(fetchMarkets());
     if (selectedProduct.productId) await dispatch(fetchFilters());
-  } catch(e) {
+  } catch (e) {
     console.error('fetch_bid_filters_data =>', e);
     throw e;
   } finally {

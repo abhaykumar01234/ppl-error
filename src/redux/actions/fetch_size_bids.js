@@ -7,18 +7,21 @@ export default function (productId, sizeId) {
 
     if (response.ok) {
       const bids = await response.json();
-      const defaultBidToMaxMarketBid = bids.reduce((bidToMaxMarket, { bidValue, bidTakePositionValue }) => {
-        bidToMaxMarket[bidValue] = bidToMaxMarket[bidValue] || bidTakePositionValue;
-        return bidToMaxMarket;
-      }, {});
-      bids.forEach((bid) => {
+      const defaultBidToMaxMarketBid = bids.reduce(
+        (bidToMaxMarket, { bidValue, bidTakePositionValue }) => {
+          bidToMaxMarket[bidValue] = bidToMaxMarket[bidValue] || bidTakePositionValue;
+          return bidToMaxMarket;
+        },
+        {}
+      );
+      bids.forEach(bid => {
         bid.bidTakePositionValue = defaultBidToMaxMarketBid[bid.bidValue];
       });
       dispatch({
         type: SET_AUCTION_BIDS,
         payload: {
-          [`size-${sizeId}`]: { bids, timestamp: Date.now() },
-        },
+          [`size-${sizeId}`]: { bids, timestamp: Date.now() }
+        }
       });
 
       return bids;

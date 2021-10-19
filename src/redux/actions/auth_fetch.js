@@ -10,6 +10,6 @@ export default async function authFetch(url, opts = {}) {
   return Promise.resolve({
     ok: res.status >= 200 && res.status < 300,
     json: () => Promise.resolve(res.data),
-    data: res.data,
+    data: res.data
   });
 }

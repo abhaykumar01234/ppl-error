@@ -9,17 +9,15 @@ export default function (state = [], action) {
       const { component } = action;
       const key = state.length + 1;
 
-      return [
-        ...state,
-        React.cloneElement(component, { key }),
-      ];
+      return [...state, React.cloneElement(component, { key })];
     }
 
     case SHIFT_ALERT: {
       return state.slice(1);
     }
 
-    default: break;
+    default:
+      break;
   }
 
   return state;

@@ -84,7 +84,8 @@ describe('Change Bids Page', () => {
           cy.contains('Unsaved Bids').should('not.exist');
           cy.get('@drawerToggler').should('be.visible');
           cy.get('@bidRowInput').invoke('val').should('be.eq', '$330');
-          cy.get('[data-cy="bid-row"]:nth(1)').find('div')
+          cy.get('[data-cy="bid-row"]:nth(1)')
+            .find('div')
             .should('be.visible')
             .and('have.attr', 'class')
             .and('contain', 'icon-filled-circle');
@@ -95,7 +96,8 @@ describe('Change Bids Page', () => {
           cy.contains('Unsaved Bids').should('not.exist');
           cy.get('@drawerToggler').should('be.visible');
           cy.get('@bidRowInput').invoke('val').should('not.be.eq', '$330');
-          cy.get('[data-cy="bid-row"]:nth(1)').find('div')
+          cy.get('[data-cy="bid-row"]:nth(1)')
+            .find('div')
             .should('be.visible')
             .and('have.attr', 'class')
             .and('not.contain', 'icon-filled-circle');
@@ -106,7 +108,7 @@ describe('Change Bids Page', () => {
         cy.updateSizeBidsAs('updateSizeBids', 500);
         cy.get('@drawerToggler').should('be.visible');
         cy.get('[data-cy=apply-bids]').click();
-        cy.contains('Great! We\'ve saved your bids.').should('be.visible');
+        cy.contains("Great! We've saved your bids.").should('be.visible');
       });
     });
 
@@ -131,28 +133,34 @@ describe('Change Bids Page', () => {
         cy.get('[data-cy=bid-row]:nth(0)').as('firstSizeRow');
         cy.get('[data-cy=bid-row]:nth(0) td:nth(1)').as('firstSizeRowAccordion');
 
-        cy.get('@firstSizeRowAccordion').find('button').click().then(() => {
-          cy.get('[data-cy=loader]').should('be.visible');
-          cy.wait('@getSegments');
+        cy.get('@firstSizeRowAccordion')
+          .find('button')
+          .click()
+          .then(() => {
+            cy.get('[data-cy=loader]').should('be.visible');
+            cy.wait('@getSegments');
 
-          cy.contains('Accounting').siblings('td:nth(2)').find('input').as('segmentBidInput');
-          cy.get('@segmentBidInput').focus().wait(DEBOUNCED_TIME).type('{selectall}350');
+            cy.contains('Accounting').siblings('td:nth(2)').find('input').as('segmentBidInput');
+            cy.get('@segmentBidInput').focus().wait(DEBOUNCED_TIME).type('{selectall}350');
 
-          cy.get('@firstSizeRow').find('div')
-            .should('be.visible')
-            .and('have.attr', 'class')
-            .and('contain', 'icon-hollow-circle');
+            cy.get('@firstSizeRow')
+              .find('div')
+              .should('be.visible')
+              .and('have.attr', 'class')
+              .and('contain', 'icon-hollow-circle');
 
-          cy.contains('Accounting').siblings('td:nth(1)').find('div')
-            .should('be.visible')
-            .and('have.attr', 'class')
-            .and('contain', 'icon-filled-circle');
+            cy.contains('Accounting')
+              .siblings('td:nth(1)')
+              .find('div')
+              .should('be.visible')
+              .and('have.attr', 'class')
+              .and('contain', 'icon-filled-circle');
 
-          cy.get('@drawerToggler').should('be.visible');
-          // cy.get('[data-cy=apply-bids]').click();
-          // cy.wait(['@updateSizeBids', '@updateSegmentBids']);
-          // cy.contains('Great! We\'ve saved your bids.').should('be.visible');
-        });
+            cy.get('@drawerToggler').should('be.visible');
+            // cy.get('[data-cy=apply-bids]').click();
+            // cy.wait(['@updateSizeBids', '@updateSegmentBids']);
+            // cy.contains('Great! We\'ve saved your bids.').should('be.visible');
+          });
       });
 
       context('multiple bids successful change', () => {
@@ -168,7 +176,7 @@ describe('Change Bids Page', () => {
           cy.get('@drawerToggler').should('be.visible');
           cy.get('[data-cy=apply-bids]').click();
           cy.wait('@updateSizeBids');
-          cy.contains('Great! We\'ve saved your bids.').should('be.visible');
+          cy.contains("Great! We've saved your bids.").should('be.visible');
           cy.get('@drawerToggler').should('not.be.visible');
         });
 
@@ -222,14 +230,18 @@ describe('Change Bids Page', () => {
         it('cancel, discard changes and go back', () => {
           cy.get('@drawerToggler').click();
           cy.get('[data-cy="drawer"] [data-gtm="pplbidding-editbid-cancelbidsbutton"]').click();
-          cy.get('[data-cy="cancel-edit-bid"] [data-gtm="pplbidding-unsavedmodal-cancelbutton"]').click();
+          cy.get(
+            '[data-cy="cancel-edit-bid"] [data-gtm="pplbidding-unsavedmodal-cancelbutton"]'
+          ).click();
           cy.url().should('include', '/vp/ppl/bids');
         });
 
         it('cancel but stay on same page with drawer open', () => {
           cy.get('@drawerToggler').click();
           cy.get('[data-cy="drawer"] [data-gtm="pplbidding-editbid-cancelbidsbutton"]').click();
-          cy.get('[data-cy="cancel-edit-bid"] [data-gtm="pplbidding-unsavedmodal-returnbutton"]').click();
+          cy.get(
+            '[data-cy="cancel-edit-bid"] [data-gtm="pplbidding-unsavedmodal-returnbutton"]'
+          ).click();
           cy.get('[data-cy="drawer"]').should('be.visible');
           cy.url().should('include', '/vp/ppl/bids/edit/12345');
         });
@@ -240,7 +252,10 @@ describe('Change Bids Page', () => {
       beforeEach(() => {
         cy.get('[data-cy="bid-row"]:nth(1)').find('button.gdm-paragraph-sm:first').click();
         cy.get('tbody:nth(1) input[name="Accounting"]').should('exist');
-        cy.get('tbody:nth(1) input[name="Accounting"]').focus().wait(DEBOUNCED_TIME).type('{selectall}325');
+        cy.get('tbody:nth(1) input[name="Accounting"]')
+          .focus()
+          .wait(DEBOUNCED_TIME)
+          .type('{selectall}325');
       });
 
       it('checks if segment name gets appended in placed bid table', () => {
@@ -252,7 +267,10 @@ describe('Change Bids Page', () => {
       it('checks multiple segment change for same band reflects in table', () => {
         cy.wait(DEBOUNCED_TIME);
         cy.get('tbody:nth(1) input[name="Architecture"]').should('exist');
-        cy.get('tbody:nth(1) input[name="Architecture"]').focus().wait(DEBOUNCED_TIME).type('{selectall}325');
+        cy.get('tbody:nth(1) input[name="Architecture"]')
+          .focus()
+          .wait(DEBOUNCED_TIME)
+          .type('{selectall}325');
         cy.get('@drawerToggler').click();
         cy.get('[data-cy="changed-bid-table"] tbody tr:nth(0)').as('changedBidRow1');
         cy.get('[data-cy="changed-bid-table"] tbody tr:nth(1)').as('changedBidRow2');
@@ -264,7 +282,10 @@ describe('Change Bids Page', () => {
         beforeEach(() => {
           cy.get('[data-cy="bid-row"]:nth(0) button.gdm-paragraph-sm:first').click();
           cy.get('tbody:nth(0) input[name="Advertising & PR"]').should('exist');
-          cy.get('tbody:nth(0) input[name="Advertising & PR"]').focus().wait(DEBOUNCED_TIME).type('{selectall}340');
+          cy.get('tbody:nth(0) input[name="Advertising & PR"]')
+            .focus()
+            .wait(DEBOUNCED_TIME)
+            .type('{selectall}340');
         });
 
         it('both segment names gets appended with different bands', () => {

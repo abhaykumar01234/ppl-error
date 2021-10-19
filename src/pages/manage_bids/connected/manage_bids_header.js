@@ -7,7 +7,9 @@ import { Dropdown } from '@arubaito';
 
 const Header = ({ markets, vendor, selectedMarket }) => {
   const dispatch = useDispatch();
-  const defaultMarket = selectedMarket.marketId ? selectedMarket : (markets.length > 0 && markets[0]) || {};
+  const defaultMarket = selectedMarket.marketId
+    ? selectedMarket
+    : (markets.length > 0 && markets[0]) || {};
 
   const setMarket = market => dispatch(setSelectedMarket(market));
 
@@ -19,11 +21,15 @@ const Header = ({ markets, vendor, selectedMarket }) => {
 
   return (
     <div className="gdm-m-bottom-md gdm-z-index-dropdown">
-      <h1 data-cy="vendor-name" className="gdm-title gdm-m-bottom-md">{vendor.name}</h1>
+      <h1 data-cy="vendor-name" className="gdm-title gdm-m-bottom-md">
+        {vendor.name}
+      </h1>
       {Boolean(markets.length) && (
         <>
           {markets.length === 1 ? (
-            <span data-cy="market-name" className="gdm-heading-lg">{defaultMarket.name}</span>
+            <span data-cy="market-name" className="gdm-heading-lg">
+              {defaultMarket.name}
+            </span>
           ) : (
             <Dropdown
               data-cy="markets-dropdown"
@@ -60,11 +66,11 @@ const Header = ({ markets, vendor, selectedMarket }) => {
 
 Header.propTypes = {
   markets: PropTypes.arrayOf(PropTypes.object).isRequired,
-  vendor: PropTypes.shape({ name: PropTypes.string, id: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]), }).isRequired,
-  selectedMarket: PropTypes.shape({ marketId: PropTypes.number, name: PropTypes.string }).isRequired,
+  vendor: PropTypes.shape({
+    name: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  }).isRequired,
+  selectedMarket: PropTypes.shape({ marketId: PropTypes.number, name: PropTypes.string }).isRequired
 };
 
 export default Header;

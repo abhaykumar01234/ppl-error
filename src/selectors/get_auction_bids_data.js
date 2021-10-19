@@ -7,5 +7,5 @@ export function getAuctionBidsData(selectedBid, auctionBids) {
 export default createSelector(
   state => state.selectedBid,
   state => state.auctionBids,
-  getAuctionBidsData,
+  getAuctionBidsData
 );

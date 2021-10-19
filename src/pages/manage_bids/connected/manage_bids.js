@@ -11,25 +11,35 @@ const ManageBids = () => {
   const [isFetchError, setFetchError] = useState(false);
   const dispatch = useDispatch();
   const [selectedMarketProducts, setSelectedMarketProducts] = useState([]);
-  const {
-    vendor, sizes, markets, metrics, selectedMarket, products, isLoading,
-  } = useSelector(state => state);
+  const { vendor, sizes, markets, metrics, selectedMarket, products, isLoading } = useSelector(
+    state => state
+  );
 
   useEffect(() => {
     dispatch(fetchManageBidsData())
-      .then(() => { setFetchError(false); })
-      .catch(() => { setFetchError(true); });
+      .then(() => {
+        setFetchError(false);
+      })
+      .catch(() => {
+        setFetchError(true);
+      });
   }, []);
 
   useEffect(() => {
     /* Fetch product sizes when market is selected from dropdown
      * Set Products in the table which are related to current selected market */
     if (selectedMarket && selectedMarket.marketId) {
-      const currentMarketProducts = products.filter(product => Number(product.marketId) === Number(selectedMarket.marketId));
+      const currentMarketProducts = products.filter(
+        product => Number(product.marketId) === Number(selectedMarket.marketId)
+      );
       const productIdList = currentMarketProducts.map(product => product.productId);
       dispatch(fetchProductsSizes(productIdList))
-        .then(() => { setFetchError(false); })
-        .catch(() => { setFetchError(true); });
+        .then(() => {
+          setFetchError(false);
+        })
+        .catch(() => {
+          setFetchError(true);
+        });
       setSelectedMarketProducts(currentMarketProducts);
     }
   }, [selectedMarket]);
@@ -37,7 +47,13 @@ const ManageBids = () => {
   return (
     <>
       <Header markets={markets} vendor={vendor} selectedMarket={selectedMarket} />
-      <Table products={selectedMarketProducts} sizes={sizes} metrics={metrics || {}} isLoading={isLoading} isFetchError={isFetchError} />
+      <Table
+        products={selectedMarketProducts}
+        sizes={sizes}
+        metrics={metrics || {}}
+        isLoading={isLoading}
+        isFetchError={isFetchError}
+      />
       <Footer />
     </>
   );

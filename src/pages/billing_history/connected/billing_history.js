@@ -11,16 +11,16 @@ import BillingView from '../components/invoices_pdf_view';
 import csvInvoiceHeaders from '../csv_invoice_headers.json';
 
 const formatAmounts = (invoices = []) =>
-  invoices.map((invoice) => ({
+  invoices.map(invoice => ({
     ...invoice,
     balance: VpComponents.formatCurrency(invoice.balance),
     invoices: invoice.invoices ? `${VpComponents.formatCurrency(invoice.invoices)} CC` : '-',
-    paymentsAndCredits: VpComponents.formatCurrency(invoice.paymentsAndCredits),
+    paymentsAndCredits: VpComponents.formatCurrency(invoice.paymentsAndCredits)
   }));
 
 const BillingHistory = () => {
   const [invoiceList, setInvoiceList] = useState([]);
-  const { vendor } = useSelector((state) => state);
+  const { vendor } = useSelector(state => state);
   const dispatch = useDispatch();
 
   const { data, status } = useAsyncFetch('/invoices');

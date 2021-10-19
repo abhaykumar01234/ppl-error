@@ -2,7 +2,6 @@
   "env": {
     "browser": true,
     "es6": true,
-    "jest/globals": true,
     "cypress/globals": true
   },
   "extends": [
@@ -11,7 +10,6 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:jest/all",
     "plugin:cypress/recommended"
   ],
   "globals": {
@@ -33,9 +31,11 @@
     "ecmaVersion": 2019,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "jest"],
+  "plugins": ["react", "prettier"],
   "rules": {
     "camelcase": 0,
+    "no-nested-ternary": "off",
+    "cypress/no-unnecessary-waiting": "warn",
     "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
     "react/jsx-wrap-multilines": [
       "error",
@@ -48,20 +48,15 @@
     "import/extensions": 0,
     "import/no-unresolved": [
       2,
-      { "ignore": ["@arubaito", "@tokens", "@src/*", "@capterra/*"] }
+      { "ignore": ["@arubaito", "@tokens", "@src/*", "@capterra/*", "@ppl/*", "@vp-components"] }
     ],
     "import/prefer-default-export": "off",
-    "jest/no-disabled-tests": "warn",
-    "jest/no-focused-tests": "error",
-    "jest/no-identical-title": "error",
-    "jest/prefer-to-have-length": "warn",
-    "jest/prefer-expect-assertions": "off",
-    "jest/expect-expect": "off",
     "jsx-a11y/anchor-is-valid": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/control-has-associated-label": "off",
     "max-len": [
       1,
       150,
@@ -71,6 +66,13 @@
     "no-continue": 0,
     "no-plusplus": 0,
     "no-shadow": 0,
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["total"]
+      }
+    ],
     "object-curly-newline": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-one-expression-per-line": 0,
@@ -83,6 +85,9 @@
         "checkChildContextTypes": true
       }
     ],
+    "react/prop-types": 1,
+    "react/jsx-props-no-spreading": 0,
+    "react/no-array-index-key": "warn",
     "import/no-extraneous-dependencies": [
       "error",
       {

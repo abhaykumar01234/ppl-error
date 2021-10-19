@@ -6,7 +6,7 @@ export default (state = null, action) => {
     case SET_SELECTED_BID:
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
     case REFRESH_SELECTED_BID:
       return action.payload;

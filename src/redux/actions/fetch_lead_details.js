@@ -14,7 +14,7 @@ export default function (leadId) {
 
         dispatch({
           type: SET_LEAD_DETAILS,
-          payload: leadDetails,
+          payload: leadDetails
         });
       }
 

@@ -15,35 +15,39 @@ import {
   DEPLOYMENT_OPTIONS_HEADING,
   DEPLOYMENT_OPTIONS_HEADING_NOTE,
   COUNTRIES_HEADING,
-  COUNTRIES_HEADING_NOTE,
+  COUNTRIES_HEADING_NOTE
 } from './constants';
 
 const bidFiltersConfig = [
   {
     heading: SIZE_HEADING,
     headingNote: SIZE_HEADING_NOTE,
-    getComponent: ({ sizes }) => <FilterSizes sizes={sizes} />,
+    getComponent: ({ sizes }) => <FilterSizes sizes={sizes} />
   },
   {
     heading: INDUSTRIES_HEADING,
     headingNote: INDUSTRIES_HEADING_NOTE,
-    getComponent: ({ industries }) => <FilterIndustries industries={industries} />,
+    getComponent: ({ industries }) => <FilterIndustries industries={industries} />
   },
   {
     heading: FUNCTIONALITIES_HEADING,
     headingNote: FUNCTIONALITIES_HEADING_NOTE,
-    getComponent: ({ functionalities }) => <FilterFunctionalities functionalities={functionalities} />,
+    getComponent: ({ functionalities }) => (
+      <FilterFunctionalities functionalities={functionalities} />
+    )
   },
   {
     heading: DEPLOYMENT_OPTIONS_HEADING,
     headingNote: DEPLOYMENT_OPTIONS_HEADING_NOTE,
-    getComponent: ({ deploymentOptions }) => <FilterDeploymentOptions deploymentOptions={deploymentOptions} />,
+    getComponent: ({ deploymentOptions }) => (
+      <FilterDeploymentOptions deploymentOptions={deploymentOptions} />
+    )
   },
   {
     heading: COUNTRIES_HEADING,
     headingNote: COUNTRIES_HEADING_NOTE,
-    getComponent: ({ countries }) => <FilterCountries countries={countries} />,
-  },
+    getComponent: ({ countries }) => <FilterCountries countries={countries} />
+  }
 ];
 
 export default bidFiltersConfig;

@@ -9,9 +9,13 @@ export const getYesterday = () => new Date(new Date().setDate(today.getDate() - 
 export const toDateString = (date, opts = { separator: '-' }) => {
   if (!date || Number.isNaN(new Date(date).getTime())) return date;
   const d = new Date(date);
-  return d.getFullYear() + opts.separator
-  + (`0${d.getMonth() + 1}`).slice(-2) + opts.separator
-  + (`0${d.getDate()}`).slice(-2);
+  return (
+    d.getFullYear() +
+    opts.separator +
+    `0${d.getMonth() + 1}`.slice(-2) +
+    opts.separator +
+    `0${d.getDate()}`.slice(-2)
+  );
 };
 
 export const formatDate = (date, locale = defaultLocale, option = defaultOption) => {

@@ -4,12 +4,13 @@ import { COLOR_BASE_LIGHT, COLOR_BASE_BOX, COLOR_BASE_BRAND_PRIMARY } from '@tok
 import { VpComponents } from '@vp-components';
 import { Page, Image, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
-const SA_LOGO_URL = 'https://capterra.s3.amazonaws.com/assets/images/logos/softwareadvice-logo-286x46.png';
+const SA_LOGO_URL =
+  'https://capterra.s3.amazonaws.com/assets/images/logos/softwareadvice-logo-286x46.png';
 
 const styles = StyleSheet.create({
   shared: {
     fontSize: 10,
-    fontWeight: 800,
+    fontWeight: 800
   },
   header: {
     display: 'flex',
@@ -19,11 +20,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 15,
     borderBottom: 1,
-    borderBottomColor: COLOR_BASE_BRAND_PRIMARY,
+    borderBottomColor: COLOR_BASE_BRAND_PRIMARY
   },
   logoWrapper: {
     width: 150,
-    height: 20,
+    height: 20
   },
   billingInfoWrapper: {
     display: 'flex',
@@ -31,43 +32,43 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 40,
     paddingTop: 15,
-    lineHeight: 1.3,
+    lineHeight: 1.3
   },
   main: {
     paddingHorizontal: 40,
-    paddingVertical: 15,
+    paddingVertical: 15
   },
   tableWrapper: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   tableCell: {
     paddingHorizontal: 5,
-    paddingVertical: 6,
+    paddingVertical: 6
   },
   dateColumn: {
-    flexBasis: '10%',
+    flexBasis: '10%'
   },
   activityColumn: {
-    flexBasis: '33%',
+    flexBasis: '33%'
   },
   invoiceColumn: {
     flexBasis: '20%',
-    textAlign: 'right',
+    textAlign: 'right'
   },
   paymentColumn: {
     flexBasis: '20%',
-    textAlign: 'right',
+    textAlign: 'right'
   },
   balanceColumn: {
     flexBasis: '18%',
-    textAlign: 'right',
+    textAlign: 'right'
   },
   darkBgRow: {
-    backgroundColor: COLOR_BASE_BOX,
+    backgroundColor: COLOR_BASE_BOX
   },
   lightBgRow: {
-    backgroundColor: COLOR_BASE_LIGHT,
+    backgroundColor: COLOR_BASE_LIGHT
   },
   footer: {
     position: 'absolute',
@@ -78,8 +79,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 20,
     borderTop: 1,
-    borderTopColor: COLOR_BASE_BRAND_PRIMARY,
-  },
+    borderTopColor: COLOR_BASE_BRAND_PRIMARY
+  }
 });
 
 const PDFDocument = ({ vendor = {}, invoiceList }) => {
@@ -117,20 +118,36 @@ const PDFDocument = ({ vendor = {}, invoiceList }) => {
           <View style={styles.main}>
             <View style={styles.tableWrapper}>
               <Text style={[styles.dateColumn, styles.tableCell, styles.darkBgRow]}>Date</Text>
-              <Text style={[styles.activityColumn, styles.tableCell, styles.darkBgRow]}>Activity</Text>
-              <Text style={[styles.invoiceColumn, styles.tableCell, styles.darkBgRow]}>Invoice</Text>
-              <Text style={[styles.paymentColumn, styles.tableCell, styles.darkBgRow]}>Payments & Credits</Text>
-              <Text style={[styles.balanceColumn, styles.tableCell, styles.darkBgRow]}>Balance</Text>
+              <Text style={[styles.activityColumn, styles.tableCell, styles.darkBgRow]}>
+                Activity
+              </Text>
+              <Text style={[styles.invoiceColumn, styles.tableCell, styles.darkBgRow]}>
+                Invoice
+              </Text>
+              <Text style={[styles.paymentColumn, styles.tableCell, styles.darkBgRow]}>
+                Payments & Credits
+              </Text>
+              <Text style={[styles.balanceColumn, styles.tableCell, styles.darkBgRow]}>
+                Balance
+              </Text>
             </View>
-            {invoiceList.map(({ billDate, name, billId, balance, invoices, paymentsAndCredits }, index) => (
-              <View key={billId} style={[styles.tableWrapper, index % 2 !== 0 ? styles.darkBgRow : styles.lightBgRow]}>
-                <Text style={[styles.dateColumn, styles.tableCell]}>{billDate}</Text>
-                <Text style={[styles.activityColumn, styles.tableCell]}>{name}</Text>
-                <Text style={[styles.invoiceColumn, styles.tableCell]}>{invoices}</Text>
-                <Text style={[styles.paymentColumn, styles.tableCell]}>{paymentsAndCredits}</Text>
-                <Text style={[styles.balanceColumn, styles.tableCell]}>{balance}</Text>
-              </View>
-            ))}
+            {invoiceList.map(
+              ({ billDate, name, billId, balance, invoices, paymentsAndCredits }, index) => (
+                <View
+                  key={billId}
+                  style={[
+                    styles.tableWrapper,
+                    index % 2 !== 0 ? styles.darkBgRow : styles.lightBgRow
+                  ]}
+                >
+                  <Text style={[styles.dateColumn, styles.tableCell]}>{billDate}</Text>
+                  <Text style={[styles.activityColumn, styles.tableCell]}>{name}</Text>
+                  <Text style={[styles.invoiceColumn, styles.tableCell]}>{invoices}</Text>
+                  <Text style={[styles.paymentColumn, styles.tableCell]}>{paymentsAndCredits}</Text>
+                  <Text style={[styles.balanceColumn, styles.tableCell]}>{balance}</Text>
+                </View>
+              )
+            )}
           </View>
           <View style={styles.footer}>
             <Text render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} fixed />
@@ -150,8 +167,8 @@ PDFDocument.propTypes = {
     city: PropTypes.string,
     state: PropTypes.string,
     zip: PropTypes.string,
-    country: PropTypes.string,
-  }).isRequired,
+    country: PropTypes.string
+  }).isRequired
 };
 
 export default PDFDocument;

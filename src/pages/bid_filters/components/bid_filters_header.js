@@ -6,14 +6,17 @@ import setSelectedMarket from '@ppl/redux/actions/set_selected_market';
 import setSelectedProduct from '@ppl/redux/actions/set_selected_product';
 
 const BidFiltersHeader = ({ markets, selectedMarket, products, selectedProduct, dispatch }) => {
-  const defaultMarket = selectedMarket.marketId ? selectedMarket : (markets.length > 0 && markets[0]) || {};
+  const defaultMarket = selectedMarket.marketId
+    ? selectedMarket
+    : (markets.length > 0 && markets[0]) || {};
 
-  const setMarket = (market) => selectedMarket.marketId !== market.marketId && dispatch(setSelectedMarket(market));
+  const setMarket = market =>
+    selectedMarket.marketId !== market.marketId && dispatch(setSelectedMarket(market));
 
-  const setProduct = (product) => {
+  const setProduct = product => {
     if (!selectedProduct.productId) dispatch(setSelectedProduct(products[0]));
     return selectedProduct.productId !== product.productId && dispatch(setSelectedProduct(product));
-  }
+  };
 
   return (
     <>
@@ -23,11 +26,13 @@ const BidFiltersHeader = ({ markets, selectedMarket, products, selectedProduct, 
             list={markets}
             selected={defaultMarket}
             selectCallback={setMarket}
-            render={(selected) => <Dropdown.Selected>{selected ? selected.name : 'Select Market'}</Dropdown.Selected>}
+            render={selected => (
+              <Dropdown.Selected>{selected ? selected.name : 'Select Market'}</Dropdown.Selected>
+            )}
             displayValue="name"
           >
             <Dropdown.List
-              render={(item) => (
+              render={item => (
                 <Dropdown.ListItem key={item.marketId} item={item}>
                   {item.name}
                 </Dropdown.ListItem>
@@ -40,12 +45,16 @@ const BidFiltersHeader = ({ markets, selectedMarket, products, selectedProduct, 
             <Dropdown
               selected={selectedProduct}
               selectCallback={setProduct}
-              list={products.filter((pr) => Number(pr.marketId) === Number(selectedMarket.marketId))}
-              render={(selected) => <Dropdown.Selected>{selected ? selected.productLabel : 'Select Product'}</Dropdown.Selected>}
+              list={products.filter(pr => Number(pr.marketId) === Number(selectedMarket.marketId))}
+              render={selected => (
+                <Dropdown.Selected>
+                  {selected ? selected.productLabel : 'Select Product'}
+                </Dropdown.Selected>
+              )}
               displayValue="productLabel"
             >
               <Dropdown.List
-                render={(item) => (
+                render={item => (
                   <Dropdown.ListItem key={item.productId} item={item}>
                     {item.productLabel}
                   </Dropdown.ListItem>
@@ -62,13 +71,13 @@ const BidFiltersHeader = ({ markets, selectedMarket, products, selectedProduct, 
 BidFiltersHeader.defaultProps = {
   markets: [],
   selectedMarket: {
-    marketId: 0,
+    marketId: 0
   },
   products: [],
   selectedProduct: {
-    productId: 0,
+    productId: 0
   },
-  dispatch: () => {},
+  dispatch: () => {}
 };
 
 BidFiltersHeader.propTypes = {
@@ -76,9 +85,9 @@ BidFiltersHeader.propTypes = {
   selectedMarket: PropTypes.shape({ marketId: PropTypes.number }),
   products: PropTypes.arrayOf(PropTypes.object),
   selectedProduct: PropTypes.shape({
-    productId: PropTypes.string,
+    productId: PropTypes.string
   }),
-  dispatch: PropTypes.func,
+  dispatch: PropTypes.func
 };
 
 export default BidFiltersHeader;

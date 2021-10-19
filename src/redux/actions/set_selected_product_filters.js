@@ -4,7 +4,7 @@ export default function (product) {
   return function setSelectedProductFilters(dispatch) {
     dispatch({
       type: SET_SELECTED_PRODUCT_FILTERS,
-      payload: product,
+      payload: product
     });
   };
 }

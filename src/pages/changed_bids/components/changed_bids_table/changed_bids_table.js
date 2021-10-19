@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { DELETE_CHANGED_BID } from '@ppl/redux/reducers/changed_bids_reducer';
 import { VpComponents } from '@vp-components';
+import cx from 'classnames';
 import s from './changed_bids_table.module.scss';
-import cx from 'classnames'
 
 export default function ChangedBidsTable({ product, changedBids }) {
   const dispatch = useDispatch();
@@ -62,13 +62,17 @@ export default function ChangedBidsTable({ product, changedBids }) {
                   >
                     Remove
                   </button>
-                  <span className={cx("gdm-icon gdm-icon-close gdm-icon-sm", s["icon-t"])} />
+                  <span className={cx('gdm-icon gdm-icon-close gdm-icon-sm', s['icon-t'])} />
                   {bid.label}
                 </th>
                 <td>{bid.oldValues && VpComponents.formatCurrency(bid.oldValues.bidAmount)}</td>
                 <td>{bid.oldValues && VpComponents.formatCurrency(bid.oldValues.maxCost)}</td>
-                <td className={s.strong}>{bid.newValues && VpComponents.formatCurrency(bid.newValues.bidAmount)}</td>
-                <td className={s.strong}>{bid.newValues && VpComponents.formatCurrency(bid.newValues.maxCost)}</td>
+                <td className={s.strong}>
+                  {bid.newValues && VpComponents.formatCurrency(bid.newValues.bidAmount)}
+                </td>
+                <td className={s.strong}>
+                  {bid.newValues && VpComponents.formatCurrency(bid.newValues.maxCost)}
+                </td>
               </tr>
             );
           })}
@@ -80,7 +84,7 @@ export default function ChangedBidsTable({ product, changedBids }) {
 
 ChangedBidsTable.propTypes = {
   product: PropTypes.shape({
-    name: PropTypes.string,
+    name: PropTypes.string
   }).isRequired,
-  changedBids: PropTypes.shape({}).isRequired,
+  changedBids: PropTypes.shape({}).isRequired
 };

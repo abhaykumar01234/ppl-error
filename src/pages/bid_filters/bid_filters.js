@@ -23,8 +23,12 @@ const BidFilters = () => {
 
   useEffect(() => {
     dispatch(fetchBidFiltersData())
-      .then(() => { setFetchError(false); })
-      .catch(() => { setFetchError(true); });
+      .then(() => {
+        setFetchError(false);
+      })
+      .catch(() => {
+        setFetchError(true);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedMarket, selectedProduct]);
 
@@ -32,7 +36,9 @@ const BidFilters = () => {
     <div className="gdm-grid">
       <div className="gdm-row">
         {isLoading && <LoadingOverlay light />}
-        <div data-cy="title" className="gdm-w-24 gdm-p-left-xs gdm-title">PPL Bid Filters</div>
+        <div data-cy="title" className="gdm-w-24 gdm-p-left-xs gdm-title">
+          PPL Bid Filters
+        </div>
         <div className="gdm-col gdm-col-16">
           <BidFiltersHeader
             markets={markets}
@@ -45,13 +51,17 @@ const BidFilters = () => {
             <div className="gdm-w-24 gdm-label">
               We have experienced an error. Please try changing the product.
             </div>
-          ) : BID_FILTER_CONFIG.map(({ heading, headingNote, getComponent }) => (
-            <div key={heading} className="gdm-m-top-md">
-              <div className="gdm-heading-lg" data-cy={heading}>{heading}</div>
-              <div className="gdm-paragraph-sm">{headingNote}</div>
-              <div className="gdm-row gdm-m-top-md">{getComponent(selectedProductFilters)}</div>
-            </div>
-          ))}
+          ) : (
+            BID_FILTER_CONFIG.map(({ heading, headingNote, getComponent }) => (
+              <div key={heading} className="gdm-m-top-md">
+                <div className="gdm-heading-lg" data-cy={heading}>
+                  {heading}
+                </div>
+                <div className="gdm-paragraph-sm">{headingNote}</div>
+                <div className="gdm-row gdm-m-top-md">{getComponent(selectedProductFilters)}</div>
+              </div>
+            ))
+          )}
         </div>
         <div className="gdm-col gdm-col-8">
           <UpdateFiltersInfoBox representative={vendor.representative} />

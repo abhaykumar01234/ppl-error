@@ -4,7 +4,7 @@ export default function (isLoading) {
   return function setIsLoading(dispatch) {
     dispatch({
       type: SET_IS_LOADING,
-      payload: isLoading,
+      payload: isLoading
     });
   };
 }

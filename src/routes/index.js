@@ -12,9 +12,9 @@ import BidFilters from '@ppl/pages/bid_filters';
 import hasFeatureFlag from '@ppl/utils/check_feature_flags';
 
 export default function Routes() {
-  let match = useRouteMatch();
+  const match = useRouteMatch();
 
-  const baseUrl = process.env.REACT_APP_ALLOW_VPF_ROUTER_ONLY ? match.path: '/vp/ppl';
+  const baseUrl = process.env.REACT_APP_ALLOW_VPF_ROUTER_ONLY ? match.path : '/vp/ppl';
 
   return (
     <>
@@ -22,15 +22,12 @@ export default function Routes() {
         <Redirect from="/" to={`${baseUrl}/bids`} exact />
         <Route path={`${baseUrl}/bids`} component={ManageBids} exact />
         <Route path={`${baseUrl}/bids/filters`} component={BidFilters} />
-        <Route path={`${baseUrl}/bids/edit/:productId`} component={EditBids} /> 
+        <Route path={`${baseUrl}/bids/edit/:productId`} component={EditBids} />
         <Route path={`${baseUrl}/leads`} component={ViewLeads} exact />
         <Route path={`${baseUrl}/leads/:id`} component={ViewLeadDetails} exact />
         {hasFeatureFlag('ppl_billing') && (
           <>
-            <Route
-              path={`${baseUrl}/billing-history/payment/:billId`}
-              component={PaymentDetails}
-            />
+            <Route path={`${baseUrl}/billing-history/payment/:billId`} component={PaymentDetails} />
             <Route path={`${baseUrl}/billing-history/invoice/:id`} component={Invoice} />
             <Route exact path={`${baseUrl}/billing-history`} component={BillingHistory} />
           </>

@@ -16,8 +16,22 @@ export default function SaveBidModal({ onClosed }) {
     onClosed();
   };
 
-  const cancelBtn = close => <Button data-gtm="pplbidding-savedmodal-returneditbutton" variant="secondary" onClick={close}> Return to Edit Bids </Button>;
-  const continueBtn = <Button data-gtm="pplbidding-savedmodal-returnmanagebutton" variant="secondary" onClick={handleManageBids}> Return to Manage Bids </Button>;
+  const cancelBtn = close => (
+    <Button data-gtm="pplbidding-savedmodal-returneditbutton" variant="secondary" onClick={close}>
+      {' '}
+      Return to Edit Bids{' '}
+    </Button>
+  );
+  const continueBtn = (
+    <Button
+      data-gtm="pplbidding-savedmodal-returnmanagebutton"
+      variant="secondary"
+      onClick={handleManageBids}
+    >
+      {' '}
+      Return to Manage Bids{' '}
+    </Button>
+  );
 
   return (
     <Modal open onClosed={onClosed}>
@@ -31,7 +45,7 @@ export default function SaveBidModal({ onClosed }) {
             <p className="gdm-paragraph-lg" />
           </Modal.Body>
           <Modal.Footer>
-            <div className={s["footer-wrapper"]}>
+            <div className={s['footer-wrapper']}>
               {continueBtn}
               {cancelBtn(close)}
             </div>
@@ -43,9 +57,9 @@ export default function SaveBidModal({ onClosed }) {
 }
 
 SaveBidModal.propTypes = {
-  onClosed: PropType.func,
+  onClosed: PropType.func
 };
 
 SaveBidModal.defaultProps = {
-  onClosed: () => {},
+  onClosed: () => {}
 };

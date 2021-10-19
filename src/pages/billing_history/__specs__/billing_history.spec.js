@@ -4,7 +4,11 @@ describe('Billing History Page', () => {
   beforeEach(() => {
     cy.getBillingHistoryAs('getInvoices');
     cy.getVendorAs('getVendor');
-    cy.intercept('get', 'https://capterra.s3.amazonaws.com/assets/images/logos/softwareadvice-logo-286x46.png', { statusCode: 200, body: null });
+    cy.intercept(
+      'get',
+      'https://capterra.s3.amazonaws.com/assets/images/logos/softwareadvice-logo-286x46.png',
+      { statusCode: 200, body: null }
+    );
 
     cy.visit('/vp/ppl/billing-history');
     cy.get('.gdm-icon-loading-spinner').as('loader');
@@ -80,7 +84,7 @@ describe('Billing History Page', () => {
       cy.get("[data-cy='billingHistory-csv-export']").should('be.visible').click();
 
       const downloadsFolder = Cypress.config('downloadsFolder');
-      cy.task('readdir', downloadsFolder).then((file) => {
+      cy.task('readdir', downloadsFolder).then(file => {
         expect(file[0]).to.match(new RegExp('invoice_list.csv$'));
       });
     });
@@ -91,7 +95,7 @@ describe('Billing History Page', () => {
       cy.get('@loader').should('be.visible');
       cy.wait(2000);
       const downloadsFolder = Cypress.config('downloadsFolder');
-      cy.task('readdir', downloadsFolder).then((file) => {
+      cy.task('readdir', downloadsFolder).then(file => {
         expect(file[0]).to.match(new RegExp('invoice_list.pdf$'));
       });
     });

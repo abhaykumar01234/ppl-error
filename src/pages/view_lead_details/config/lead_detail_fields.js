@@ -1,4 +1,3 @@
-
 const leadDetailsHash = [
   {
     heading: 'Contact Information',
@@ -6,66 +5,66 @@ const leadDetailsHash = [
       [
         {
           title: 'Follow-up Instructions',
-          key: 'followUpNotes',
+          key: 'followUpNotes'
         },
         {
           title: 'Company Name',
-          key: 'company',
+          key: 'company'
         },
         {
           title: 'Contact Name',
-          key: 'contactName',
+          key: 'contactName'
         },
         {
           title: 'Job Title',
-          key: 'jobTitle',
+          key: 'jobTitle'
         },
         {
           title: 'Office',
-          key: 'phone',
+          key: 'phone'
         },
         {
-          title: 'Contact\'s Timezone',
-          key: 'timezone',
+          title: "Contact's Timezone",
+          key: 'timezone'
         },
         {
           title: 'Email',
-          key: 'email',
-        },
+          key: 'email'
+        }
       ],
       [
         {
           title: 'Website',
-          key: 'website',
+          key: 'website'
         },
         {
           title: 'Address',
-          key: 'address',
+          key: 'address'
         },
         {
           title: 'City',
-          key: 'city',
+          key: 'city'
         },
         {
           title: 'State',
-          key: 'state',
+          key: 'state'
         },
         {
           title: 'Zip Code',
-          key: 'zip',
+          key: 'zip'
         },
         {
           title: 'Country',
-          key: 'country',
+          key: 'country'
         },
         {
           title: 'Timestamp',
           key: 'timestamp',
           toolTip: true,
-          toolTipKey: 'notes',
-        },
-      ],
-    ],
+          toolTipKey: 'notes'
+        }
+      ]
+    ]
   },
   {
     heading: 'Company Profile',
@@ -73,31 +72,34 @@ const leadDetailsHash = [
       [
         {
           title: 'Industry',
-          key: 'industry',
+          key: 'industry'
         },
         {
           title: 'Segment',
-          key: 'segment',
+          key: 'segment'
         },
         {
           title: 'Number of Employees',
           nested: true,
-          getNestedValue: profile => profile && profile.sizeTypes && profile.sizeTypes['Number of Employees'],
-        },
+          getNestedValue: profile =>
+            profile && profile.sizeTypes && profile.sizeTypes['Number of Employees']
+        }
       ],
       [
         {
           title: 'Annual Revenue',
           nested: true,
-          getNestedValue: profile => profile && profile.sizeTypes && profile.sizeTypes['Size (Annual Revenue)'],
+          getNestedValue: profile =>
+            profile && profile.sizeTypes && profile.sizeTypes['Size (Annual Revenue)']
         },
         {
           title: 'Number of Users',
           nested: true,
-          getNestedValue: profile => profile && profile.sizeTypes && profile.sizeTypes['Number of Users'],
-        },
-      ],
-    ],
+          getNestedValue: profile =>
+            profile && profile.sizeTypes && profile.sizeTypes['Number of Users']
+        }
+      ]
+    ]
   },
   {
     heading: 'Project & Requirements Overview',
@@ -105,40 +107,40 @@ const leadDetailsHash = [
       [
         {
           title: 'Applications Needed',
-          key: 'applications',
+          key: 'applications'
         },
         {
           title: 'Key Features Needed',
-          key: 'keyFeaturesNeeded',
+          key: 'keyFeaturesNeeded'
         },
         {
           title: 'Deployment',
-          key: 'deployment',
+          key: 'deployment'
         },
         {
           title: 'Currently Using',
-          key: 'currentlyUsing',
-        },
+          key: 'currentlyUsing'
+        }
       ],
       [
         {
           title: 'Reasons for Shopping',
-          key: 'reasonsForShopping',
+          key: 'reasonsForShopping'
         },
         {
-          title: 'Who They\'ve Evaluated',
-          key: 'whoEvaluated',
+          title: "Who They've Evaluated",
+          key: 'whoEvaluated'
         },
         {
           title: 'Price Expectations',
-          key: 'priceExpectations',
+          key: 'priceExpectations'
         },
         {
           title: 'Timeframe',
-          key: 'timeframe',
-        },
-      ],
-    ],
+          key: 'timeframe'
+        }
+      ]
+    ]
   },
   {
     heading: 'Next Steps',
@@ -146,25 +148,25 @@ const leadDetailsHash = [
       [
         {
           title: 'Request',
-          key: 'request',
+          key: 'request'
         },
         {
           title: 'Contact Notes',
-          key: 'contactNotes',
-        },
+          key: 'contactNotes'
+        }
       ],
       [
         {
           title: 'Product',
-          key: 'product',
+          key: 'product'
         },
         {
           title: 'Qualified By',
-          key: 'qualifiedBy',
-        },
-      ],
-    ],
-  },
+          key: 'qualifiedBy'
+        }
+      ]
+    ]
+  }
 ];
 
 export default leadDetailsHash;

@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { VpComponents } from '@vp-components';
 import { TableRowAccordion, ToolTip } from '@arubaito';
+import cx from 'classnames';
 import OverallCampaignSummary from './overall_campaign_summary';
 import TableLoader from '../../../utils/TableLoader';
 import s from './manage_bids_table.module.scss';
-import cx from 'classnames';
 
 const COL_FALLBACK = '-';
 
@@ -26,10 +26,11 @@ const HeadingToolTip = ({ title, children }) => (
 );
 
 const Table = ({ products, sizes, metrics, isLoading, isFetchError }) => {
-  const filterNullBidRows = (sizeList) => sizeList.filter((srow) => srow.biddingAvailable === true);
-  const showLoader = !isLoading && (!products.length || !Object.keys(sizes[products[0].productId] || {}).length);
+  const filterNullBidRows = sizeList => sizeList.filter(srow => srow.biddingAvailable === true);
+  const showLoader =
+    !isLoading && (!products.length || !Object.keys(sizes[products[0].productId] || {}).length);
 
-  const returnTableRow = (product) => {
+  const returnTableRow = product => {
     const { productId, productLabel } = product;
     const selectedSize = sizes[productId] || [];
     const selectedSizeLength = selectedSize.length;
@@ -38,7 +39,7 @@ const Table = ({ products, sizes, metrics, isLoading, isFetchError }) => {
       <TableRowAccordion
         key={productId}
         rowsLength={selectedSizeLength}
-        render={(onToggle) => (
+        render={onToggle => (
           <>
             {filterNullBidRows(selectedSize).map((row, i) => (
               <tr key={row.label}>
@@ -62,9 +63,14 @@ const Table = ({ products, sizes, metrics, isLoading, isFetchError }) => {
                 <td data-cy="bids-body-label">{VpComponents.formatCurrency(row.baseCpl)}</td>
                 <td data-cy="bids-body-label">{VpComponents.formatCurrency(row.winningBid)}</td>
                 <td data-cy="bids-body-label">
-                  <Link className="gdm-link-default default-bid-link" to={`/vp/ppl/bids/edit/${String(productId)}`}>
-                    <span className="bid-value">{VpComponents.formatCurrency(row.bidAmount, null, 'Place bid')} </span>
-                    <span className={cx("gdm-icon gdm-icon-sm gdm-icon-edit", s["icon-align"])} />
+                  <Link
+                    className="gdm-link-default default-bid-link"
+                    to={`/vp/ppl/bids/edit/${String(productId)}`}
+                  >
+                    <span className="bid-value">
+                      {VpComponents.formatCurrency(row.bidAmount, null, 'Place bid')}{' '}
+                    </span>
+                    <span className={cx('gdm-icon gdm-icon-sm gdm-icon-edit', s['icon-align'])} />
                   </Link>
                 </td>
                 <td data-cy="bids-body-label">{VpComponents.formatNumber(row.customBidsCount)}</td>
@@ -81,7 +87,12 @@ const Table = ({ products, sizes, metrics, isLoading, isFetchError }) => {
 
   return (
     <>
-      <table className={cx("gdm-table gdm-table-reset gdm-text-center gdm-w-24 gdm-z-index-default gdm-m-bottom-xxl", s["manage-bids-table"])}>
+      <table
+        className={cx(
+          'gdm-table gdm-table-reset gdm-text-center gdm-w-24 gdm-z-index-default gdm-m-bottom-xxl',
+          s['manage-bids-table']
+        )}
+      >
         <thead>
           <tr>
             <th data-cy="bids-header-label" className="gdm-text-left">
@@ -92,41 +103,47 @@ const Table = ({ products, sizes, metrics, isLoading, isFetchError }) => {
             </th>
             <th>
               <HeadingToolTip title="Base CPL">
-                The Base CPL (Cost per Lead) is the standard price charged for a lead based on the size of the buyer. If you do not have an active
-                bid, you will pay this amount for every lead we send you.
+                The Base CPL (Cost per Lead) is the standard price charged for a lead based on the
+                size of the buyer. If you do not have an active bid, you will pay this amount for
+                every lead we send you.
               </HeadingToolTip>
             </th>
             <th>
-              <HeadingToolTip title="Max. Market Bid">The highest current bid relative to all active bids.</HeadingToolTip>
+              <HeadingToolTip title="Max. Market Bid">
+                The highest current bid relative to all active bids.
+              </HeadingToolTip>
             </th>
             <th>
               <HeadingToolTip title="Default Bid">
-                The default amount you are willing to pay for a lead. If you have no custom bids, your default bid will apply to all leads we send
-                you.
+                The default amount you are willing to pay for a lead. If you have no custom bids,
+                your default bid will apply to all leads we send you.
               </HeadingToolTip>
             </th>
             <th>
               <HeadingToolTip title="Custom Bids">
-                Custom bids allow you to specify a unique bid amount for a size and segment combination. If you do not have a custom bid applied for a
-                given segment, your default bid amount will be applied.
+                Custom bids allow you to specify a unique bid amount for a size and segment
+                combination. If you do not have a custom bid applied for a given segment, your
+                default bid amount will be applied.
               </HeadingToolTip>
             </th>
             <th>
               <HeadingToolTip title="Max. Cost">
-                The max actual amount you will pay for a lead. This is typically less than your Default Bid amount, and only $5 more than the bid
-                immediately below you. In the case of a tie, all bidders pay their max bid.
+                The max actual amount you will pay for a lead. This is typically less than your
+                Default Bid amount, and only $5 more than the bid immediately below you. In the case
+                of a tie, all bidders pay their max bid.
               </HeadingToolTip>
             </th>
             <th>
               <HeadingToolTip title="Avg. Pos">
-                Your average position out of all leads that your product appears available to recommend over the past 7 days. If we do not have enough
-                recent lead data, this column appears blank.
+                Your average position out of all leads that your product appears available to
+                recommend over the past 7 days. If we do not have enough recent lead data, this
+                column appears blank.
               </HeadingToolTip>
             </th>
             <th>
               <HeadingToolTip title="Rec. Rate">
-                Your recommendation rate is the percent of leads we recommended your product on out of the leads you were eligible to receive over the
-                past 7 days.
+                Your recommendation rate is the percent of leads we recommended your product on out
+                of the leads you were eligible to receive over the past 7 days.
               </HeadingToolTip>
             </th>
           </tr>
@@ -136,7 +153,7 @@ const Table = ({ products, sizes, metrics, isLoading, isFetchError }) => {
             <TableLoader colSpan={9} isError={isFetchError} rowLength={products.length} />
           </tbody>
         ) : (
-          products.map((product) => returnTableRow(product))
+          products.map(product => returnTableRow(product))
         )}
       </table>
       <OverallCampaignSummary metrics={metrics} />
@@ -149,16 +166,16 @@ Table.propTypes = {
   sizes: PropTypes.shape(PropTypes.number[{}]).isRequired,
   metrics: PropTypes.shape({}).isRequired,
   isLoading: PropTypes.bool.isRequired,
-  isFetchError: PropTypes.bool.isRequired,
+  isFetchError: PropTypes.bool.isRequired
 };
 
 HeadingToolTip.propTypes = {
   title: PropTypes.node.isRequired,
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 HeadingToolTip.defaultProps = {
-  children: <></>,
+  children: <></>
 };
 
 export default Table;

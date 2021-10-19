@@ -1,7 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, {
-  useState, useRef, useEffect,
-} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { CSVLink } from 'react-csv';
@@ -12,9 +10,9 @@ import fetchLeadsReport from '@ppl/redux/actions/fetch_leads_report';
 import fetchLeads from '@ppl/redux/actions/fetch_leads';
 import { AlertMessage, Button, InputField, DatePicker } from '@arubaito';
 import setIsLoading from '@ppl/redux/actions/set_is_loading';
+import cx from 'classnames';
 import LeadsDocument from './view_leads_pdf_report';
 import s from './view_leads_header.module.scss';
-import cx from 'classnames';
 
 const today = new Date();
 
@@ -26,18 +24,18 @@ const datePresets = [
   {
     text: 'Today',
     start: today,
-    end: today,
+    end: today
   },
   {
     text: 'Last month',
     start: new Date(today.getFullYear(), today.getMonth() - 1, 1),
-    end: new Date(today.getFullYear(), today.getMonth(), 0),
+    end: new Date(today.getFullYear(), today.getMonth(), 0)
   },
   {
     text: 'Last 7 Days',
     start: new Date().setDate(today.getDate() - 6),
-    end: today,
-  },
+    end: today
+  }
 ];
 
 const headers = [
@@ -70,12 +68,10 @@ const headers = [
   { label: 'Date Sent', key: 'dateSent' },
   { label: 'Demo Time', key: 'demoTime' },
   { label: 'Qualified By', key: 'qualifiedBy' },
-  { label: 'Lead Type', key: 'leadType' },
+  { label: 'Lead Type', key: 'leadType' }
 ];
 
-const Header = ({
-  vendor, leadsReport, fetchingData, setFetchingData,
-}) => {
+const Header = ({ vendor, leadsReport, fetchingData, setFetchingData }) => {
   const [downloadCsv, setDownloadCsv] = useState(false);
   const [showExportErrorMsg, setShowExportErrorMsg] = useState(false);
   const [startDate, setStartDate] = useState(getFirstDay());
@@ -95,7 +91,7 @@ const Header = ({
       }
       setDownloadCsv(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [downloadCsv]);
 
   const leadFilter = e => setLeadFilterName(e.target.value);
@@ -107,10 +103,12 @@ const Header = ({
       fetchLeadsReport(vendor.id, {
         startDate: toDateString(startDate),
         endDate: toDateString(endDate),
-        leadName: leadFilterName.trim(),
-      }),
+        leadName: leadFilterName.trim()
+      })
     )
-      .then(() => { setDownloadCsv(true); })
+      .then(() => {
+        setDownloadCsv(true);
+      })
       .finally(() => dispatch(setIsLoading(false)));
   };
 
@@ -122,16 +120,19 @@ const Header = ({
       fetchLeads(vendor.id, {
         startDate: toDateString(startDate),
         endDate: toDateString(endDate),
-        leadName: leadFilterName.trim(),
-      }),
+        leadName: leadFilterName.trim()
+      })
     )
-      .then((leads) => {
-        const exportPdf = (leads && leads.length > 1)
-          ? toPdf(
-            <LeadsDocument leads={leads} />,
-            `${vendor.name}-${toDateString(startDate)}-${toDateString(endDate)}-leads-report.pdf`,
-          )
-          : setShowExportErrorMsg(true);
+      .then(leads => {
+        const exportPdf =
+          leads && leads.length > 1
+            ? toPdf(
+                <LeadsDocument leads={leads} />,
+                `${vendor.name}-${toDateString(startDate)}-${toDateString(
+                  endDate
+                )}-leads-report.pdf`
+              )
+            : setShowExportErrorMsg(true);
         setFetchingData({ status: 'success' });
       })
       .finally(() => dispatch(setIsLoading(false)));
@@ -144,11 +145,15 @@ const Header = ({
       fetchLeads(vendor.id, {
         startDate: toDateString(startDate),
         endDate: toDateString(endDate),
-        leadName: leadFilterName.trim(),
-      }),
+        leadName: leadFilterName.trim()
+      })
     )
-      .then(() => { setFetchingData({ status: 'success' }); })
-      .catch(() => { setFetchingData({ status: 'error' }); });
+      .then(() => {
+        setFetchingData({ status: 'success' });
+      })
+      .catch(() => {
+        setFetchingData({ status: 'error' });
+      });
   };
 
   // eslint-disable-next-line no-shadow
@@ -158,21 +163,19 @@ const Header = ({
   };
 
   // eslint-disable-next-line no-shadow
-  const onFocusChange = (focusedInput) => {
+  const onFocusChange = focusedInput => {
     setFocusedInput(focusedInput);
   };
 
   return (
-    <div className={cx("gdm-grid gdm-m-bottom-md", s["view-leads-header"])}>
+    <div className={cx('gdm-grid gdm-m-bottom-md', s['view-leads-header'])}>
       <span className="gdm-title">View Leads</span>
       <div className="gdm-row gdm-m-top-md">
         <InputField
           className="gdm-col gdm-col-10"
           render={id => (
             <>
-              <InputField.Label htmlFor={id}>
-                Date Range
-              </InputField.Label>
+              <InputField.Label htmlFor={id}>Date Range</InputField.Label>
               <DatePicker
                 minDate={new Date(new Date().setDate(today.getDate() - 180))}
                 maxDate={today}
@@ -190,9 +193,7 @@ const Header = ({
           className="gdm-col gdm-col-8"
           render={(id, status) => (
             <>
-              <InputField.Label htmlFor={id}>
-                Search Lead Name
-              </InputField.Label>
+              <InputField.Label htmlFor={id}>Search Lead Name</InputField.Label>
               <InputField.Input
                 id={id}
                 value={leadFilterName}
@@ -204,7 +205,7 @@ const Header = ({
             </>
           )}
         />
-        <div className={cx("gdm-col gdm-col-6", s["get-report-button-wrapper"])}>
+        <div className={cx('gdm-col gdm-col-6', s['get-report-button-wrapper'])}>
           <Button
             className="gdm-w-24"
             variant="primary"
@@ -230,14 +231,16 @@ const Header = ({
               ref={csvRef}
               headers={headers}
               data={leadsReport}
-              filename={`${vendor.name}-${toDateString(startDate)}-${toDateString(endDate)}-leads-report.csv`}
+              filename={`${vendor.name}-${toDateString(startDate)}-${toDateString(
+                endDate
+              )}-leads-report.csv`}
             />
             <Button
-              className={s["export-buttons"]}
+              className={s['export-buttons']}
               variant="secondary"
               small
               data-gtm="pplleads-viewleads-exportcsv"
-              disabled={(fetchingData.status === 'pending') || !startDate || !endDate}
+              disabled={fetchingData.status === 'pending' || !startDate || !endDate}
               onClick={getReportCsv}
             >
               Export CSV
@@ -246,11 +249,11 @@ const Header = ({
         </div>
         <div className="gdm-col gdm-col-3">
           <Button
-            className={s["export-buttons"]}
+            className={s['export-buttons']}
             variant="secondary"
             small
             data-gtm="pplleads-viewleads-exportpdf"
-            disabled={(fetchingData.status === 'pending') || !startDate || !endDate}
+            disabled={fetchingData.status === 'pending' || !startDate || !endDate}
             onClick={getReportPdf}
           >
             Export PDF
@@ -265,7 +268,7 @@ Header.propTypes = {
   vendor: PropTypes.shape({}).isRequired,
   leadsReport: PropTypes.arrayOf(PropTypes.object).isRequired,
   fetchingData: PropTypes.shape({ status: PropTypes.string }).isRequired,
-  setFetchingData: PropTypes.func.isRequired,
+  setFetchingData: PropTypes.func.isRequired
 };
 
 export default Header;

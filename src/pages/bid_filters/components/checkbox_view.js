@@ -5,7 +5,16 @@ import { Checkbox, FormControlLabel, ToolTip } from '@arubaito';
 
 const noop = () => {};
 
-const CheckboxView = ({ hideLabel, isChecked, label, labelHelperText, tooltipText, formControlLabelText, wrapperStyle, items }) => {
+const CheckboxView = ({
+  hideLabel,
+  isChecked,
+  label,
+  labelHelperText,
+  tooltipText,
+  formControlLabelText,
+  wrapperStyle,
+  items
+}) => {
   const hasItems = items.length > 0;
 
   const getLabel = () => {
@@ -17,7 +26,9 @@ const CheckboxView = ({ hideLabel, isChecked, label, labelHelperText, tooltipTex
           <ToolTip
             targetId="bidFilterAnchor"
             placement="top"
-            trigger={<span className="gdm-icon gdm-icon-info gdm-icon-sm gdm-m-top-sm gdm-m-left-xxs gdm-align-bottom" />}
+            trigger={
+              <span className="gdm-icon gdm-icon-info gdm-icon-sm gdm-m-top-sm gdm-m-left-xxs gdm-align-bottom" />
+            }
           >
             {tooltipText}
           </ToolTip>
@@ -36,13 +47,22 @@ const CheckboxView = ({ hideLabel, isChecked, label, labelHelperText, tooltipTex
 
   const getItems = () => {
     return items.map(
-      (item) =>
+      item =>
         Boolean(item.name) && (
           <div key={item.name}>
             <FormControlLabel
               data-cy="checkbox-label"
               label={item.name}
-              control={<Checkbox name="sizes" onChange={noop} checked={item.isActive} className="gdm-z-index-deep" disabled value="" />}
+              control={
+                <Checkbox
+                  name="sizes"
+                  onChange={noop}
+                  checked={item.isActive}
+                  className="gdm-z-index-deep"
+                  disabled
+                  value=""
+                />
+              }
               disabled
             />
           </div>
@@ -60,7 +80,16 @@ const CheckboxView = ({ hideLabel, isChecked, label, labelHelperText, tooltipTex
           <FormControlLabel
             key={getFormControlLabelText()}
             label={getFormControlLabelText()}
-            control={<Checkbox name="sizes" onChange={noop} checked={isChecked} className="gdm-z-index-deep" disabled value="" />}
+            control={
+              <Checkbox
+                name="sizes"
+                onChange={noop}
+                checked={isChecked}
+                className="gdm-z-index-deep"
+                disabled
+                value=""
+              />
+            }
             disabled
           />
         )}
@@ -76,7 +105,7 @@ CheckboxView.defaultProps = {
   labelHelperText: '',
   tooltipText: '',
   formControlLabelText: '',
-  items: [],
+  items: []
 };
 
 CheckboxView.propTypes = {
@@ -86,7 +115,7 @@ CheckboxView.propTypes = {
   labelHelperText: PropTypes.string,
   tooltipText: PropTypes.string,
   formControlLabelText: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.object),
+  items: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default CheckboxView;

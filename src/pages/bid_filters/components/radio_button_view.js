@@ -9,11 +9,18 @@ const RadioButtonView = ({ options, functionality }) => {
   return (
     <div className="gdm-m-top-xs">
       <Radio.Group value="" name="radioOptions" onChange={handleChange}>
-        {options.map((option) => (
+        {options.map(option => (
           <div key={option.label}>
             <FormControlLabel
               label={option.label}
-              control={<Radio.Button checked={option.value === functionality.weight} value={option.value} className="gdm-z-index-deep" disabled />}
+              control={
+                <Radio.Button
+                  checked={option.value === functionality.weight}
+                  value={option.value}
+                  className="gdm-z-index-deep"
+                  disabled
+                />
+              }
               disabled
             />
           </div>
@@ -25,12 +32,12 @@ const RadioButtonView = ({ options, functionality }) => {
 
 RadioButtonView.defaultProps = {
   options: [],
-  functionality: { weight: null },
+  functionality: { weight: null }
 };
 
 RadioButtonView.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
-  functionality: PropTypes.shape({ weight: PropTypes.number }),
+  functionality: PropTypes.shape({ weight: PropTypes.number })
 };
 
 export default RadioButtonView;

@@ -12,16 +12,12 @@ const ChangedBids = ({ body, header, isBidChanged }) => (
           data-gtm="pplbidding-editbid-drawertoggle"
           iconClassName="gdm-icon-md"
           onClick={toggle}
-          className={s["toggle-btn"]}
+          className={s['toggle-btn']}
         />
         {header}
       </Drawer.Header>
     )}
-    renderContent={() => (
-      <Drawer.Content>
-        {body}
-      </Drawer.Content>
-    )}
+    renderContent={() => <Drawer.Content>{body}</Drawer.Content>}
   />
 );
 

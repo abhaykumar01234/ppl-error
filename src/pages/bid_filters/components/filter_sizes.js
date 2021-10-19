@@ -18,11 +18,11 @@ const FilterSizes = ({ sizes }) => {
 };
 
 FilterSizes.defaultProps = {
-  sizes: [],
+  sizes: []
 };
 
 FilterSizes.propTypes = {
-  sizes: PropTypes.arrayOf(PropTypes.object),
+  sizes: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default FilterSizes;

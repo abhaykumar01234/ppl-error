@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { VpComponents } from '@vp-components';
-import s from './invoiceInfo.module.scss';
 import cx from 'classnames';
+import s from './invoiceInfo.module.scss';
 
 const InvoiceInfo = ({ invoice }) => {
-  const { vendor } = useSelector((state) => state);
+  const { vendor } = useSelector(state => state);
 
   if (Object.keys(vendor).length === 0) return null;
 
@@ -49,22 +49,28 @@ const InvoiceInfo = ({ invoice }) => {
     const currentCharges = VpComponents.formatCurrency(taxAmount + invoice.subtotal);
     const invoiceDate = new Date(invoice.invoiceYear, invoice.invoiceMonth - 1, 1);
     const invoiceMonthName = invoiceDate.toLocaleString('default', {
-      month: 'long',
+      month: 'long'
     });
 
     return (
-      <div className={cx("gdm-col gdm-col-8 gdm-col-offset-1", s["invoice-details-payment"])}>
+      <div className={cx('gdm-col gdm-col-8 gdm-col-offset-1', s['invoice-details-payment'])}>
         <div className="gdm-row gdm-m-bottom-xs">
           <span className="gdm-col gdm-col-14">Subtotal:</span>
-          <span className="gdm-col-8 gdm-col-offset-2">{VpComponents.formatCurrency(invoice.subtotal)}</span>
+          <span className="gdm-col-8 gdm-col-offset-2">
+            {VpComponents.formatCurrency(invoice.subtotal)}
+          </span>
         </div>
         <div className="gdm-row gdm-m-bottom-xs">
           <span className="gdm-col gdm-col-14">{`Taxable Amount (${invoice.taxableRate}%):`}</span>
-          <span className="gdm-col-8 gdm-col-offset-2">{VpComponents.formatCurrency(taxableAmount, null, 'N/A')}</span>
+          <span className="gdm-col-8 gdm-col-offset-2">
+            {VpComponents.formatCurrency(taxableAmount, null, 'N/A')}
+          </span>
         </div>
         <div className="gdm-row gdm-m-bottom-xs">
           <span className="gdm-col gdm-col-14">{`Tax Amount (${invoice.taxRate}%):`}</span>
-          <span className="gdm-col-8 gdm-col-offset-2">{VpComponents.formatCurrency(taxAmount, null, 'N/A')}</span>
+          <span className="gdm-col-8 gdm-col-offset-2">
+            {VpComponents.formatCurrency(taxAmount, null, 'N/A')}
+          </span>
         </div>
         {/*
           TODO:: remove this comment when this ticket gets fixed - https://softwareadvice.atlassian.net/browse/BUGS-4228
@@ -73,7 +79,7 @@ const InvoiceInfo = ({ invoice }) => {
             <span className="gdm-col-8 gdm-col-offset-2">{VpComponents.formatCurrency(invoice.balanceForward)}</span>
           </div> 
         */}
-        <div className={cx("gdm-row gdm-m-bottom-xs", s["align-baseline"])}>
+        <div className={cx('gdm-row gdm-m-bottom-xs', s['align-baseline'])}>
           <span className="gdm-heading-lg gdm-col gdm-col-14">{invoiceMonthName} Charges:</span>
           <span className="gdm-col-8 gdm-col-offset-2">{currentCharges}</span>
         </div>
@@ -83,8 +89,8 @@ const InvoiceInfo = ({ invoice }) => {
   };
 
   return (
-    <div className={s["invoice-details-wrapper"]}>
-      <div className={cx("gdm-paragraph-sm gdm-m-top-xl gdm-row", s["invoice-details"])}>
+    <div className={s['invoice-details-wrapper']}>
+      <div className={cx('gdm-paragraph-sm gdm-m-top-xl gdm-row', s['invoice-details'])}>
         {returnSoftwareAdviceAddress()}
         {returnBillingAddress()}
         {returnDates()}
@@ -114,8 +120,8 @@ InvoiceInfo.propTypes = {
     vendorId: PropTypes.number,
     taxRate: PropTypes.number,
     taxableRate: PropTypes.number,
-    type: PropTypes.string,
-  }).isRequired,
+    type: PropTypes.string
+  }).isRequired
 };
 
 export default InvoiceInfo;

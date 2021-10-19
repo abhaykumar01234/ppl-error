@@ -5,16 +5,17 @@ import { VpComponents } from '@vp-components';
 import { COLOR_BASE_BRAND_PRIMARY } from '@tokens/variables';
 import { Page, Image, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
-const SA_LOGO_URL = 'https://capterra.s3.amazonaws.com/assets/images/logos/softwareadvice-logo-286x46.png';
+const SA_LOGO_URL =
+  'https://capterra.s3.amazonaws.com/assets/images/logos/softwareadvice-logo-286x46.png';
 
 const styles = StyleSheet.create({
   shared: {
     fontSize: 10,
-    fontWeight: 800,
+    fontWeight: 800
   },
   main: {
     paddingHorizontal: 40,
-    paddingVertical: 15,
+    paddingVertical: 15
   },
   header: {
     display: 'flex',
@@ -24,43 +25,43 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 15,
     borderBottom: 1,
-    borderBottomColor: COLOR_BASE_BRAND_PRIMARY,
+    borderBottomColor: COLOR_BASE_BRAND_PRIMARY
   },
   logoWrapper: {
     width: 150,
-    height: 20,
+    height: 20
   },
   paymentInfoWrapper: {
     display: 'flex',
     width: '100%',
     paddingHorizontal: 40,
     paddingTop: 15,
-    lineHeight: 1.5,
+    lineHeight: 1.5
   },
   paymentInfoHeader: {
     fontStyle: 'italic',
     marginTop: '30px',
-    marginBottom: '10px',
+    marginBottom: '10px'
   },
   paymentInfo: {
     width: '100%',
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   infoBlocks: {
     display: 'block',
-    width: '50%',
+    width: '50%'
   },
   fieldRow: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   paymentInfoField: {
-    width: '35%',
+    width: '35%'
   },
   paymentInfoValue: {
-    maxWidth: '50%',
-  },
+    maxWidth: '50%'
+  }
 });
 
 const PDFDocument = ({ vendorName, paymentInfo }) => {
@@ -70,13 +71,13 @@ const PDFDocument = ({ vendorName, paymentInfo }) => {
       'Received From:': vendorName || '',
       'Customer #:': vendorId || '',
       'Busniess Contact:': contact ? contact.fullName : '',
-      'Purchase Order:': purchaseOrder || '',
+      'Purchase Order:': purchaseOrder || ''
     },
     {
       'Date:': creationDay || '',
       'Payment Method:': name ? name.split('Payment - ')[1] : '',
-      'Amount(US$)': amount ? VpComponents.formatCurrency(amount) : '',
-    },
+      'Amount(US$)': amount ? VpComponents.formatCurrency(amount) : ''
+    }
   ];
 
   return (
@@ -124,9 +125,9 @@ PDFDocument.propTypes = {
     amount: PropTypes.number,
     paymentOrder: PropTypes.number,
     contact: PropTypes.shape({
-      fullName: PropTypes.string,
-    }),
-  }).isRequired,
+      fullName: PropTypes.string
+    })
+  }).isRequired
 };
 
 export default PDFDocument;

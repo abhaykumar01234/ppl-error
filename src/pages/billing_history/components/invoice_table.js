@@ -14,7 +14,13 @@ const InvoiceTable = ({ showScrollable, children }) => (
         <th className="gdm-w-4 gdm-text-right">Balance</th>
       </tr>
     </thead>
-    <tbody className={cx('gdm-relative ', { 'gdm-block gdm-scroll-shadow': showScrollable }, s["table-content"])}>
+    <tbody
+      className={cx(
+        'gdm-relative ',
+        { 'gdm-block gdm-scroll-shadow': showScrollable },
+        s['table-content']
+      )}
+    >
       {children}
     </tbody>
   </table>
@@ -22,11 +28,11 @@ const InvoiceTable = ({ showScrollable, children }) => (
 
 InvoiceTable.propTypes = {
   children: PropTypes.node,
-  showScrollable: PropTypes.bool,
+  showScrollable: PropTypes.bool
 };
 InvoiceTable.defaultProps = {
   children: <tr />,
-  showScrollable: false,
+  showScrollable: false
 };
 
 export default InvoiceTable;

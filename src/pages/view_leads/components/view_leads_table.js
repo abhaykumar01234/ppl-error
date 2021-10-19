@@ -21,13 +21,17 @@ const Table = ({ fetchingData, leads }) => {
   }, [leads, fetchingData.status]);
 
   const returnTableRow = () =>
-    leads.map((lead) => {
+    leads.map(lead => {
       const { leadId, dateSent, company, size, amount, product } = lead;
       return (
         <tr key={leadId}>
           <td className="gdm-w-3">{formatDate(dateSent) || FALLBACK}</td>
           <td className="gdm-w-6">
-            <Link className="gdm-link-default" data-gtm="pplbidding-leads-viewleaddetails" to={`/vp/ppl/leads/${String(leadId)}`}>
+            <Link
+              className="gdm-link-default"
+              data-gtm="pplbidding-leads-viewleaddetails"
+              to={`/vp/ppl/leads/${String(leadId)}`}
+            >
               {company || FALLBACK}
             </Link>
           </td>
@@ -52,7 +56,11 @@ const Table = ({ fetchingData, leads }) => {
       </thead>
       <tbody>
         {showLoader ? (
-          <TableLoader colSpan={5} isError={fetchingData.status === 'error' || tableError} errorMessage={tableError} />
+          <TableLoader
+            colSpan={5}
+            isError={fetchingData.status === 'error' || tableError}
+            errorMessage={tableError}
+          />
         ) : (
           leads && returnTableRow()
         )}
@@ -63,7 +71,7 @@ const Table = ({ fetchingData, leads }) => {
 
 Table.propTypes = {
   fetchingData: PropTypes.shape({ status: PropTypes.string }).isRequired,
-  leads: PropTypes.arrayOf(PropTypes.object).isRequired,
+  leads: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Table;

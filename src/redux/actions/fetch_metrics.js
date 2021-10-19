@@ -12,7 +12,7 @@ export default () => async (dispatch, getState) => {
 
     dispatch({
       type: SET_METRICS,
-      payload: metricsData,
+      payload: metricsData
     });
   }
 

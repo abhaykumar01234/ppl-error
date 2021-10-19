@@ -17,11 +17,11 @@ const FilterCountries = ({ countries }) => {
 };
 
 FilterCountries.defaultProps = {
-  countries: [],
+  countries: []
 };
 
 FilterCountries.propTypes = {
-  countries: PropTypes.arrayOf(PropTypes.object),
+  countries: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default FilterCountries;

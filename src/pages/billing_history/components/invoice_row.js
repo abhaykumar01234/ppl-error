@@ -6,7 +6,10 @@ const InvoiceRow = ({ invoice }) => (
   <tr>
     <td className="gdm-text-left gdm-w-3">{invoice.billDate}</td>
     <td className="gdm-text-left gdm-w-7">
-      <Link className="gdm-link-default" to={`/vp/ppl/billing-history/${invoice.type.toLowerCase()}/${invoice.billId}`}>
+      <Link
+        className="gdm-link-default"
+        to={`/vp/ppl/billing-history/${invoice.type.toLowerCase()}/${invoice.billId}`}
+      >
         {invoice.name}
       </Link>
     </td>
@@ -26,8 +29,8 @@ InvoiceRow.propTypes = {
     paymentsAndCredits: PropTypes.string,
     balance: PropTypes.string,
     name: PropTypes.string,
-    type: PropTypes.string,
-  }),
+    type: PropTypes.string
+  })
 };
 InvoiceRow.defaultProps = {
   invoice: {
@@ -39,8 +42,8 @@ InvoiceRow.defaultProps = {
     paymentsAndCredits: '-',
     balance: '-',
     name: '',
-    type: '',
-  },
+    type: ''
+  }
 };
 
 export default InvoiceRow;

@@ -9,21 +9,19 @@ const updateSegmentBid = async (changedBid, productId) => {
       authFetch(url, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         // TODO: add real userId here
-        body: JSON.stringify({ userId: 0, bids: newBidList }),
-      }),
+        body: JSON.stringify({ userId: 0, bids: newBidList })
+      })
     );
   });
   const response = await Promise.all(promiseList);
   return response;
 };
 
-export default changedBid => (
-  async (dispatch, getState) => {
-    const { selectedBid } = getState();
-    const response = await updateSegmentBid(changedBid, selectedBid.productId);
-    return response;
-  }
-);
+export default changedBid => async (dispatch, getState) => {
+  const { selectedBid } = getState();
+  const response = await updateSegmentBid(changedBid, selectedBid.productId);
+  return response;
+};

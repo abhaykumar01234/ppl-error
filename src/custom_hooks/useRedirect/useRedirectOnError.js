@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const defaultRoute = '/vp/ppl/bids';
@@ -15,6 +15,7 @@ const useRedirectOnError = (execute = defaultExecute, toRoute = defaultRoute, de
       }
     };
     executeFn();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependency);
 };
 

@@ -9,26 +9,43 @@ import { VpComponents } from '@vp-components';
 import NumberFormat from 'react-number-format';
 import { DELETE_CHANGED_BID } from '@ppl/redux/reducers/changed_bids_reducer';
 import { InputField, TableRowAccordion, ToolTip } from '@arubaito';
+import cx from 'classnames';
 import TableLoader from '../../../utils/TableLoader';
 import s from './edit_bids_table.module.scss';
-import cx from 'classnames'
 
 const FALLBACK = '-';
 
-const filterNullBidRows = (sizeList) => sizeList.filter((srow) => srow.biddingAvailable === true);
+const filterNullBidRows = sizeList => sizeList.filter(srow => srow.biddingAvailable === true);
 
-const getBidError = (bidAmount, baseCpl) => (bidAmount > baseCpl ? 'Bid must be in an increments of $5.' : 'Bid must be higher than the base CPL');
+const getBidError = (bidAmount, baseCpl) =>
+  bidAmount > baseCpl
+    ? 'Bid must be in an increments of $5.'
+    : 'Bid must be higher than the base CPL';
 
-const returnSegmentBidsRow = (segment, segmentIndex, sizeId, sizeKey, changedBids, openAccordion, dispatch, productId, baseCpl) => {
+const returnSegmentBidsRow = (
+  segment,
+  segmentIndex,
+  sizeId,
+  sizeKey,
+  changedBids,
+  openAccordion,
+  dispatch,
+  productId,
+  baseCpl
+) => {
   const segmentKey = sizeKey + segmentIndex + 1;
   const hasError = changedBids[segmentKey] && changedBids[segmentKey].invalid;
-  const bidAmount = changedBids[segmentKey] ? changedBids[segmentKey].newValues.bidAmount : segment.bid;
+  const bidAmount = changedBids[segmentKey]
+    ? changedBids[segmentKey].newValues.bidAmount
+    : segment.bid;
   const hasSegmentBidChange = !hasError && bidAmount !== segment.bid;
 
   return (
     <tr key={segment.id}>
       <td className="gdm-w-1" />
-      <td className="gdm-w-1 gdm-keep-border gdm-p-none">{hasSegmentBidChange && <div className={s["icon-filled-circle"]} />}</td>
+      <td className="gdm-w-1 gdm-keep-border gdm-p-none">
+        {hasSegmentBidChange && <div className={s['icon-filled-circle']} />}
+      </td>
       <td className="gdm-w-7 gdm-p-left-none gdm-p-right-none gdm-text-left">{segment.label}</td>
       <td className="gdm-w-4 gdm-allow-overflow">
         <InputField
@@ -49,7 +66,7 @@ const returnSegmentBidsRow = (segment, segmentIndex, sizeId, sizeKey, changedBid
                       changedBidKey: segmentKey,
                       productId,
                       sizeId,
-                      id: segment.id,
+                      id: segment.id
                     })
                   );
                 }}
@@ -58,7 +75,7 @@ const returnSegmentBidsRow = (segment, segmentIndex, sizeId, sizeKey, changedBid
                     setChangedBid({
                       key: segmentKey,
                       amount: floatValue,
-                      baseCpl,
+                      baseCpl
                     })
                   );
                 }, 250)}
@@ -107,21 +124,53 @@ const returnSegmentBidsRow = (segment, segmentIndex, sizeId, sizeKey, changedBid
   );
 };
 
-const returnSegmentBidRows = (segments, sizeId, sizeKey, changedBids, open, dispatch, productId, baseCpl) =>
+const returnSegmentBidRows = (
+  segments,
+  sizeId,
+  sizeKey,
+  changedBids,
+  open,
+  dispatch,
+  productId,
+  baseCpl
+) =>
   (segments || []).map((segment, segmentIndex) =>
-    returnSegmentBidsRow(segment, segmentIndex, sizeId, sizeKey, changedBids, open, dispatch, productId, baseCpl)
+    returnSegmentBidsRow(
+      segment,
+      segmentIndex,
+      sizeId,
+      sizeKey,
+      changedBids,
+      open,
+      dispatch,
+      productId,
+      baseCpl
+    )
   );
 
-const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, productId, activeProduct = {}, apiRef, sizeState) => {
+const returnAccordionRow = (
+  size,
+  sizeIndex,
+  segments,
+  changedBids,
+  dispatch,
+  productId,
+  activeProduct = {},
+  apiRef,
+  sizeState
+) => {
   const sizeKey = (sizeIndex + 1) * 100;
   const hasError = changedBids[sizeKey] && changedBids[sizeKey].invalid;
-  const bidAmount = changedBids[sizeKey] ? changedBids[sizeKey].newValues.bidAmount : size.bidAmount;
+  const bidAmount = changedBids[sizeKey]
+    ? changedBids[sizeKey].newValues.bidAmount
+    : size.bidAmount;
   const sizeSegments = (segments && segments[size.id]) || [];
   const rowLength = sizeSegments && sizeSegments.length > 0 ? sizeSegments.length : 3;
   // by default we need a minimum of 2 rows to show the accordion, added +1 extra for the table row loader.
 
   const BidChangeCircle = () => {
-    if (!hasError && bidAmount !== size.bidAmount) return <div className={s["icon-filled-circle"]} />;
+    if (!hasError && bidAmount !== size.bidAmount)
+      return <div className={s['icon-filled-circle']} />;
 
     let hasHollowCircle = false;
     const changedBidKeys = Object.keys(changedBids);
@@ -136,11 +185,11 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
         }
       }
     }
-    return hasHollowCircle ? <div className={s["icon-hollow-circle"]} /> : <></>;
+    return hasHollowCircle ? <div className={s['icon-hollow-circle']} /> : <></>;
   };
 
   const { sizeDetail, setSizeDetail } = sizeState;
-  const onClickToggleButton = (toggle) => {
+  const onClickToggleButton = toggle => {
     toggle();
 
     const fetchSegments = async () => {
@@ -159,9 +208,12 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
     }
   };
 
-  const toggleRowButton = (onToggle) =>
+  const toggleRowButton = onToggle =>
     activeProduct.advancedBiddingAvailable ? (
-      <TableRowAccordion.ToggleButton className={s["no-outline"]} onClick={() => onClickToggleButton(onToggle)}>
+      <TableRowAccordion.ToggleButton
+        className={s['no-outline']}
+        onClick={() => onClickToggleButton(onToggle)}
+      >
         {size.label}
       </TableRowAccordion.ToggleButton>
     ) : (
@@ -170,7 +222,7 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
 
   return (
     <TableRowAccordion
-      className={s["table-row-accordion"]}
+      className={s['table-row-accordion']}
       key={sizeKey}
       rowsLength={rowLength}
       render={(onToggle, open) => (
@@ -199,7 +251,7 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
                             type: 'size',
                             changedBidKey: sizeKey,
                             id: size.id,
-                            productId,
+                            productId
                           })
                         );
                       }}
@@ -208,7 +260,7 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
                           setChangedBid({
                             key: sizeKey,
                             amount: floatValue,
-                            baseCpl: size.baseCpl,
+                            baseCpl: size.baseCpl
                           })
                         );
                       }, 250)}
@@ -258,7 +310,16 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
             <td className="gdm-w-23 gdm-heading-sm gdm-text-left gdm-p-left-none">Custom Bids</td>
           </tr>
           {sizeSegments.length > 0 ? (
-            returnSegmentBidRows(sizeSegments, size.id, sizeKey, changedBids, open, dispatch, productId, size.baseCpl)
+            returnSegmentBidRows(
+              sizeSegments,
+              size.id,
+              sizeKey,
+              changedBids,
+              open,
+              dispatch,
+              productId,
+              size.baseCpl
+            )
           ) : (
             <TableLoader isError={sizeDetail[size.id] && sizeDetail[size.id].isFetchError} />
           )}
@@ -268,9 +329,28 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
   );
 };
 
-const returnRows = (sizes, segments, changedBids, dispatch, productId, activeProduct, apiRef, sizeState) =>
+const returnRows = (
+  sizes,
+  segments,
+  changedBids,
+  dispatch,
+  productId,
+  activeProduct,
+  apiRef,
+  sizeState
+) =>
   filterNullBidRows(sizes[activeProduct.productId]).map((size, sizeIndex) =>
-    returnAccordionRow(size, sizeIndex, segments, changedBids, dispatch, productId, activeProduct, apiRef, sizeState)
+    returnAccordionRow(
+      size,
+      sizeIndex,
+      segments,
+      changedBids,
+      dispatch,
+      productId,
+      activeProduct,
+      apiRef,
+      sizeState
+    )
   );
 
 const Table = ({ productId }) => {
@@ -278,12 +358,19 @@ const Table = ({ productId }) => {
   const dispatch = useDispatch();
   // apiRef will prevent the calling of same API If it is already called
   const apiRef = useRef({});
-  const { segments, sizes, changedBids, activeProduct } = useSelector((state) => getEdidPageData(state, productId));
+  const { segments, sizes, changedBids, activeProduct } = useSelector(state =>
+    getEdidPageData(state, productId)
+  );
 
   if (!Object.keys(sizes).length || !activeProduct) return null;
 
   return (
-    <table className={cx("gdm-table gdm-table-reset gdm-table-inputs gdm-text-center gdm-w-24", s["edit-bids-table"])}>
+    <table
+      className={cx(
+        'gdm-table gdm-table-reset gdm-table-inputs gdm-text-center gdm-w-24',
+        s['edit-bids-table']
+      )}
+    >
       <thead>
         <tr>
           <th className="gdm-w-1 gdm-keep-border gdm-p-none" />
@@ -303,7 +390,8 @@ const Table = ({ productId }) => {
                 </div>
               }
             >
-              The default amount you are willing to pay for a lead. If you have no custom bids, your default bid will apply to all leads we send you.
+              The default amount you are willing to pay for a lead. If you have no custom bids, your
+              default bid will apply to all leads we send you.
             </ToolTip>
           </th>
           <th className="gdm-w-2">
@@ -317,8 +405,9 @@ const Table = ({ productId }) => {
                 </div>
               }
             >
-              Your average position out of all leads that your product appears available to recommend over the past 7 days. If we do not have enough
-              recent lead data, this column appears blank.
+              Your average position out of all leads that your product appears available to
+              recommend over the past 7 days. If we do not have enough recent lead data, this column
+              appears blank.
             </ToolTip>
           </th>
           <th className="gdm-w-3">
@@ -332,8 +421,9 @@ const Table = ({ productId }) => {
                 </div>
               }
             >
-              The Base CPL (Cost per Lead) is the standard price charged for a lead based on the size of the buyer. If you do not have an active bid,
-              you will pay this amount for every lead we send you.
+              The Base CPL (Cost per Lead) is the standard price charged for a lead based on the
+              size of the buyer. If you do not have an active bid, you will pay this amount for
+              every lead we send you.
             </ToolTip>
           </th>
           <th className="gdm-w-3">
@@ -347,8 +437,9 @@ const Table = ({ productId }) => {
                 </div>
               }
             >
-              The max actual amount you will pay for a lead. This is typically less than your Default Bid amount, and only $5 more than the bid
-              immediately below you. In the case of a tie, all bidders pay their max bid.
+              The max actual amount you will pay for a lead. This is typically less than your
+              Default Bid amount, and only $5 more than the bid immediately below you. In the case
+              of a tie, all bidders pay their max bid.
             </ToolTip>
           </th>
           <th className="gdm-w-3">
@@ -362,19 +453,22 @@ const Table = ({ productId }) => {
                 </div>
               }
             >
-              Your recommendation rate is the percent of leads we recommended your product on out of the leads you were eligible to receive over the
-              past 7 days.
+              Your recommendation rate is the percent of leads we recommended your product on out of
+              the leads you were eligible to receive over the past 7 days.
             </ToolTip>
           </th>
         </tr>
       </thead>
-      {returnRows(sizes, segments, changedBids, dispatch, productId, activeProduct, apiRef, { sizeDetail, setSizeDetail })}
+      {returnRows(sizes, segments, changedBids, dispatch, productId, activeProduct, apiRef, {
+        sizeDetail,
+        setSizeDetail
+      })}
     </table>
   );
 };
 
 Table.propTypes = {
-  productId: PropTypes.string.isRequired,
+  productId: PropTypes.string.isRequired
 };
 
 export default Table;

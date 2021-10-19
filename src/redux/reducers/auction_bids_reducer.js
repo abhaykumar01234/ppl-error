@@ -5,7 +5,7 @@ export default (state = {}, action) => {
     case SET_AUCTION_BIDS:
       return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
     default:
       return state;

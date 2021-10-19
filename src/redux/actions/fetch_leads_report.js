@@ -11,7 +11,7 @@ export default function (vendorId, queryParams = {}) {
 
       dispatch({
         type: SET_LEADS_REPORT,
-        payload: leadsReport,
+        payload: leadsReport
       });
 
       return leadsReport;

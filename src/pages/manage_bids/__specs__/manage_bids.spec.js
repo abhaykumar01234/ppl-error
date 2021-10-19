@@ -42,8 +42,10 @@ describe('Manage Bids Page', () => {
       cy.get('[data-cy="markets-dropdown"]').should('exist').trigger('mouseover');
       cy.get('[data-cy="dropdown-list-item-Manufacturing"]').should('exist').click();
       cy.get('[data-cy="bids-body-label"]').should('exist');
-      cy.get('[data-cy="show-all-size-bids-btn"]')
-        .should('have.text', 'NetSuite Professional Services Automation - Project Management');
+      cy.get('[data-cy="show-all-size-bids-btn"]').should(
+        'have.text',
+        'NetSuite Professional Services Automation - Project Management'
+      );
     });
 
     it('bids table should have valid headers', () => {
@@ -58,7 +60,7 @@ describe('Manage Bids Page', () => {
         'Custom Bids',
         'Max. Cost',
         'Avg. Pos',
-        'Rec. Rate',
+        'Rec. Rate'
       ];
       cy.get('[data-cy="bids-header-label"]').each(([$header], index) => {
         expect($header.textContent).to.eq(bidTableHeaders[index]);
@@ -67,7 +69,7 @@ describe('Manage Bids Page', () => {
 
     it('should have a valid number of bids row with content', () => {
       cy.get('table.gdm-table > tbody > tr').should('have.length', 5);
-      cy.get('[data-cy="bids-body-label"]').each(($td) => {
+      cy.get('[data-cy="bids-body-label"]').each($td => {
         cy.wrap($td).should('not.be.empty');
       });
     });
@@ -90,12 +92,12 @@ describe('Manage Bids Page', () => {
       cy.visit('/');
     });
 
-    it('doesn\'t displays vendor and market name', () => {
+    it("doesn't displays vendor and market name", () => {
       cy.get('[data-cy="vendor-name"]').should('be.empty');
       cy.get('[data-cy="market-name"]').should('not.exist');
     });
 
-    it('doesn\'t hides the bids table', () => {
+    it("doesn't hides the bids table", () => {
       cy.get('table.gdm-table').should('exist');
     });
   });

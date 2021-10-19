@@ -2,7 +2,7 @@ import fetchVendor from '../fetch_vendor';
 import setIsLoading from '../set_is_loading';
 import authFetch from '../auth_fetch';
 
-export default (billId, fetchOptions) => async (dispatch) => {
+export default (billId, fetchOptions) => async dispatch => {
   try {
     dispatch(setIsLoading(true));
     dispatch(fetchVendor());

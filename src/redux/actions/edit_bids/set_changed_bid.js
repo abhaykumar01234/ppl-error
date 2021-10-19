@@ -10,7 +10,7 @@ export default function (bid) {
     if (bid.amount === selectedBid.bid.bid) {
       dispatch({
         type: DELETE_CHANGED_BID,
-        key: bid.key,
+        key: bid.key
       });
       return;
     }
@@ -30,17 +30,20 @@ export default function (bid) {
           id: selectedBid.bid.id,
           sizeId: selectedBid.sizeBid && selectedBid.sizeBid.id,
           invalid: !isBidValid(bid.amount, bid.baseCpl),
-          label: (selectedBid.type === 'segment') ? `${selectedBid.sizeBid.label} - ${selectedBid.bid.label}` : selectedBid.bid.label,
+          label:
+            selectedBid.type === 'segment'
+              ? `${selectedBid.sizeBid.label} - ${selectedBid.bid.label}`
+              : selectedBid.bid.label,
           newValues: {
             bidAmount: bid.amount,
-            maxCost: newMaxCost,
+            maxCost: newMaxCost
           },
           oldValues: {
             bidAmount: selectedBid.bid.bidAmount,
-            maxCost: selectedBid.bid.maxCost,
-          },
-        },
-      },
+            maxCost: selectedBid.bid.maxCost
+          }
+        }
+      }
     });
   };
 }
