@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { SIZE_HEIGHT_TABLE_ROW } from '@tokens/variables.js';
 import Loader from './Loader';
-import './TableLoader.scss';
+import s from './TableLoader.module.scss';
 
 const TableLoader = ({ isError, errorMessage, rowLength, colSpan, ...props }) => {
   const rowCount = isError ? 2 : rowLength || 1;
   return (
-    <tr moduleClassName="table-loader-row" {...props}>
-      <td moduleClassName="table-loader-column" colSpan={colSpan}>
+    <tr className={s["table-loader-row"]} {...props}>
+      <td className={s["table-loader-column"]} colSpan={colSpan}>
         <div className="gdm-relative" style={{ height: `${rowCount * SIZE_HEIGHT_TABLE_ROW}px` }}>
           {isError ? (
-            <div moduleClassName="error-message">
+            <div className={s["error-message"]}>
               <span className="gdm-label">{errorMessage || 'We have experienced an error. Please try reloading.'}</span>
             </div>
           ) : (

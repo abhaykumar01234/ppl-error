@@ -1,0 +1,32 @@
+[
+  {
+    "leadId": 12345,
+    "status": "sent",
+    "dateSent": "2021-04-23 18:36:18",
+    "amount": "180.00",
+    "crmPremiumAmount": "2.95",
+    "company": "ABC Def Group",
+    "product": "ABC - Project Management",
+    "size": "6 to 10 users"
+  },
+  {
+    "leadId": 12348,
+    "status": "sent",
+    "dateSent": "2021-04-23 17:34:34",
+    "amount": "135.70",
+    "crmPremiumAmount": "2.95",
+    "company": "XYZ Communications",
+    "product": "Yellow Management",
+    "size": "$1 million to $5 million"
+  },
+  {
+    "leadId": 12349,
+    "status": "sent",
+    "dateSent": "2021-04-23 17:07:14",
+    "amount": "831.90",
+    "crmPremiumAmount": "2.95",
+    "company": "Wifi Texas",
+    "product": "Bluetooth - Manufacturing",
+    "size": "$6 million to $25 million"
+  }
+]

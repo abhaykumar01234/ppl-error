@@ -8,7 +8,8 @@ import ExportButtons from '@ppl/shared_components/export_buttons';
 import { prefixDate } from '@ppl/utils/date';
 import PaymentView from '../components/payment_pdf_view';
 import PaymentDetails from '../components/payment_details';
-import './payment_type.scss';
+import s from './payment_type.module.scss';
+import cx from 'classnames'
 
 const PaymentType = () => {
   const { billId } = useParams();
@@ -50,8 +51,8 @@ const PaymentType = () => {
 
   return (
     <div>
-      <header moduleClassName="header">
-        <h1 className="gdm-title" moduleClassName="title">
+      <header className={s.header}>
+        <h1 className={cx("gdm-title", s.title)}>
           PPL Billing History
         </h1>
         <Link to="/vp/ppl/billing-history" className="gdm-link-default" data-cy="invoices-link">
@@ -60,7 +61,7 @@ const PaymentType = () => {
       </header>
       <br />
       {isDetailAvailable && <h3 className="gdm-heading-lg">Receipt for Payment({paymentInfo.creationDay})</h3>}
-      <div moduleClassName="detailWrapper">
+      <div className={s.detailWrapper}>
         <PaymentDetails vendorName={vendorName} paymentInfo={paymentInfo} />
         {paymentInfo && paymentInfo.billId && vendorName && <ExportButtons>{pdfButton}</ExportButtons>}
       </div>

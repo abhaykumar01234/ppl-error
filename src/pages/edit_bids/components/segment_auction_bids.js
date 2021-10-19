@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { VpComponents } from '@vp-components';
-import './segment_auction_bids.scss';
+import s from './segment_auction_bids.module.scss';
 
 const SegmentAuctionBids = ({ selectedBid }) => (
-  <div moduleClassName="segment-auction-bids-wrapper">
+  <div className={s["segment-auction-bids-wrapper"]}>
     <div className="gdm-heading-lg">{selectedBid.sizeBid.label}</div>
     <div className="gdm-heading-lg">{selectedBid.bid.label}</div>
     <p className="gdm-paragraph-lg gdm-text-center gdm-m-top-sm">

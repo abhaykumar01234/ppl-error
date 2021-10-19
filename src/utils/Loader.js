@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { LoadingOverlay } from '@arubaito';
-import './Loader.scss';
+import s from './Loader.module.scss';
 
 const Loader = ({ fullPage, ...props }) => (
-  <div data-cy="loader" moduleClassName={cx('loading-wrapper', { 'component-loader': !fullPage })}>
+  <div data-cy="loader" className={cx(s['loading-wrapper'], { [s['component-loader']]: !fullPage })}>
     <LoadingOverlay {...props} />
   </div>
 );

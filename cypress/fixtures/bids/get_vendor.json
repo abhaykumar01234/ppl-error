@@ -1,0 +1,17 @@
+{
+  "id": 111,
+  "name": "vendor 1",
+  "representative": {
+    "name": "ABC Vendor",
+    "email": "test@company.com",
+    "phone": "+11 111 111 111"
+  },
+  "paymentTerm": "Net 45",
+  "address1": "address 1",
+  "address2": "Address 2",
+  "city": "Rocklin",
+  "state": "CA",
+  "zip": "95765",
+  "country": "United States",
+  "paymentType": "ACH"
+}

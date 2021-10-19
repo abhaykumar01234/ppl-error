@@ -1,0 +1,14 @@
+[
+  {
+    "marketId": 4,
+    "name": "Retail"
+  },
+  {
+    "marketId": 8,
+    "name": "Manufacturing"
+  },
+  {
+    "marketId": 9,
+    "name": "Distribution"
+  }
+]

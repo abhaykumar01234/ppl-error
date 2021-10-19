@@ -1,0 +1,25 @@
+{
+  "amount": 100000.45,
+  "billId": 1234567,
+  "creationDay": "08/15/2021",
+  "invoiceMonth": 0,
+  "invoiceYear": 0,
+  "contact": {
+    "fullName": "fname lname"
+  },
+  "balanceForward": 16923.85,
+  "isEmailed": 0,
+  "dueDate": "12/08/2021",
+  "isPartial": 0,
+  "isRevised": 0,
+  "memo": "",
+  "name": "Payment - ACH #1234567890",
+  "purchaseOrder": "",
+  "quickbooksId": "ABCD-123456",
+  "revisionDay": "00/00/0000",
+  "subtotal": 0,
+  "taxRate": 0,
+  "taxableRate": 0,
+  "type": "Payment",
+  "vendorId": 789
+}

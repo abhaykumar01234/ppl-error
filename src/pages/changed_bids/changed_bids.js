@@ -1,10 +1,10 @@
 import React from 'react';
 import { Drawer } from '@arubaito';
-import './changed_bids.scss';
+import s from './changed_bids.module.scss';
 
 const ChangedBids = ({ body, header, isBidChanged }) => (
   <Drawer
-    moduleClassName="drawer"
+    className={s.drawer}
     show={isBidChanged}
     renderHeader={toggle => (
       <Drawer.Header>
@@ -12,7 +12,7 @@ const ChangedBids = ({ body, header, isBidChanged }) => (
           data-gtm="pplbidding-editbid-drawertoggle"
           iconClassName="gdm-icon-md"
           onClick={toggle}
-          moduleClassName="toggle-btn"
+          className={s["toggle-btn"]}
         />
         {header}
       </Drawer.Header>

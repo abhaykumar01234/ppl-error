@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { VpComponents } from '@vp-components';
-import './invoiceInfo.scss';
+import s from './invoiceInfo.module.scss';
+import cx from 'classnames';
 
 const InvoiceInfo = ({ invoice }) => {
   const { vendor } = useSelector((state) => state);
@@ -52,7 +53,7 @@ const InvoiceInfo = ({ invoice }) => {
     });
 
     return (
-      <div className="gdm-col gdm-col-8 gdm-col-offset-1" moduleClassName="invoice-details-payment">
+      <div className={cx("gdm-col gdm-col-8 gdm-col-offset-1", s["invoice-details-payment"])}>
         <div className="gdm-row gdm-m-bottom-xs">
           <span className="gdm-col gdm-col-14">Subtotal:</span>
           <span className="gdm-col-8 gdm-col-offset-2">{VpComponents.formatCurrency(invoice.subtotal)}</span>
@@ -72,7 +73,7 @@ const InvoiceInfo = ({ invoice }) => {
             <span className="gdm-col-8 gdm-col-offset-2">{VpComponents.formatCurrency(invoice.balanceForward)}</span>
           </div> 
         */}
-        <div className="gdm-row gdm-m-bottom-xs" moduleClassName="align-baseline">
+        <div className={cx("gdm-row gdm-m-bottom-xs", s["align-baseline"])}>
           <span className="gdm-heading-lg gdm-col gdm-col-14">{invoiceMonthName} Charges:</span>
           <span className="gdm-col-8 gdm-col-offset-2">{currentCharges}</span>
         </div>
@@ -82,8 +83,8 @@ const InvoiceInfo = ({ invoice }) => {
   };
 
   return (
-    <div moduleClassName="invoice-details-wrapper">
-      <div className="gdm-paragraph-sm gdm-m-top-xl gdm-row" moduleClassName="invoice-details">
+    <div className={s["invoice-details-wrapper"]}>
+      <div className={cx("gdm-paragraph-sm gdm-m-top-xl gdm-row", s["invoice-details"])}>
         {returnSoftwareAdviceAddress()}
         {returnBillingAddress()}
         {returnDates()}

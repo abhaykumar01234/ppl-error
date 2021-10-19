@@ -7,7 +7,8 @@ import { VpComponents } from '@vp-components';
 import Loader from '@ppl/utils/Loader';
 import { TableRowSelect } from '@arubaito';
 
-import './edit_bids_auction_bids.scss';
+import s from './edit_bids_auction_bids.module.scss';
+import cx from 'classnames';
 
 const returnAuctionBidsRow = (index, { bidPosition = '-', bidValue, bidTakePositionValue, isUserPosition }, selectedBid, dispatch) => (
   <TableRowSelect key={index}>
@@ -29,7 +30,7 @@ const returnAuctionBidsRow = (index, { bidPosition = '-', bidValue, bidTakePosit
     </td>
     <td className="gdm-w-6">{VpComponents.formatCurrency(bidValue)}</td>
     <td className="gdm-w-6">{VpComponents.formatCurrency(bidTakePositionValue)}</td>
-    <td className="gdm-w-6">{isUserPosition && <div moduleClassName="icon-filled-circle" />}</td>
+    <td className="gdm-w-6">{isUserPosition && <div className={s["icon-filled-circle"]} />}</td>
   </TableRowSelect>
 );
 
@@ -40,7 +41,7 @@ const AuctionBids = () => {
   const selectedAuctionBid = auctionBids[`${selectedBid.type}-${selectedBid.bid.id}`];
 
   return (
-    <div moduleClassName="auction-bids-wrapper">
+    <div className={s["auction-bids-wrapper"]}>
       {!selectedAuctionBid ? (
         <Loader fullPage={false} />
       ) : (
@@ -50,7 +51,7 @@ const AuctionBids = () => {
               <span className="gdm-block gdm-heading-lg">{selectedBid.bid.label}</span>
               <span className="gdm-block gdm-paragraph-sm">{selectedBid.sizeLabel || 'All Segments'}</span>
             </header>
-            <table className="gdm-table gdm-text-center gdm-m-top-md gdm-overflow-hidden" moduleClassName="auction-bids-table">
+            <table className={cx("gdm-table gdm-text-center gdm-m-top-md gdm-overflow-hidden", s["auction-bids-table"])}>
               <thead>
                 <tr>
                   <th className="gdm-w-6">Position</th>
@@ -69,7 +70,7 @@ const AuctionBids = () => {
             </table>
           </main>
           <footer>
-            <span className="gdm-block gdm-paragraph-sm" moduleClassName="bid-accuracy-info">
+            <span className={cx("gdm-block gdm-paragraph-sm", s["bid-accuracy-info"])}>
               This information is accurate as of {new Date(selectedAuctionBid.timestamp).toUTCString()}.
             </span>
           </footer>

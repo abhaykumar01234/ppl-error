@@ -13,7 +13,8 @@ import fetchLeads from '@ppl/redux/actions/fetch_leads';
 import { AlertMessage, Button, InputField, DatePicker } from '@arubaito';
 import setIsLoading from '@ppl/redux/actions/set_is_loading';
 import LeadsDocument from './view_leads_pdf_report';
-import './view_leads_header.scss';
+import s from './view_leads_header.module.scss';
+import cx from 'classnames';
 
 const today = new Date();
 
@@ -162,7 +163,7 @@ const Header = ({
   };
 
   return (
-    <div className="gdm-grid gdm-m-bottom-md" moduleClassName="view-leads-header">
+    <div className={cx("gdm-grid gdm-m-bottom-md", s["view-leads-header"])}>
       <span className="gdm-title">View Leads</span>
       <div className="gdm-row gdm-m-top-md">
         <InputField
@@ -203,7 +204,7 @@ const Header = ({
             </>
           )}
         />
-        <div className="gdm-col gdm-col-6" moduleClassName="get-report-button-wrapper">
+        <div className={cx("gdm-col gdm-col-6", s["get-report-button-wrapper"])}>
           <Button
             className="gdm-w-24"
             variant="primary"
@@ -232,7 +233,7 @@ const Header = ({
               filename={`${vendor.name}-${toDateString(startDate)}-${toDateString(endDate)}-leads-report.csv`}
             />
             <Button
-              moduleClassName="export-buttons"
+              className={s["export-buttons"]}
               variant="secondary"
               small
               data-gtm="pplleads-viewleads-exportcsv"
@@ -245,7 +246,7 @@ const Header = ({
         </div>
         <div className="gdm-col gdm-col-3">
           <Button
-            moduleClassName="export-buttons"
+            className={s["export-buttons"]}
             variant="secondary"
             small
             data-gtm="pplleads-viewleads-exportpdf"
@@ -262,7 +263,7 @@ const Header = ({
 
 Header.propTypes = {
   vendor: PropTypes.shape({}).isRequired,
-  leadsReport: PropTypes.shape([]).isRequired,
+  leadsReport: PropTypes.arrayOf(PropTypes.object).isRequired,
   fetchingData: PropTypes.shape({ status: PropTypes.string }).isRequired,
   setFetchingData: PropTypes.func.isRequired,
 };

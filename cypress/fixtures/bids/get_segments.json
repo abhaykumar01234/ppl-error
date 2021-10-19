@@ -1,0 +1,282 @@
+[
+    {
+        "currentPosition": 4,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "700",
+        "label": "Accounting",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 1,
+        "highestBid": "330",
+        "bid": 330,
+        "id": "701",
+        "label": "Advertising & PR",
+        "maxCpl": "325"
+    },
+    {
+        "currentPosition": 4,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "747",
+        "label": "Aerospace & Defense",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 5,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "702",
+        "label": "Architecture",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "748",
+        "label": "Construction",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 1,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "749",
+        "label": "Education",
+        "maxCpl": "305"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "757",
+        "label": "Energy",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 5,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "703",
+        "label": "Engineering",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 4,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "755",
+        "label": "Financial Services",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "763",
+        "label": "Food & Beverage",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 2,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "704",
+        "label": "Government",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "705",
+        "label": "Graphic Design",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 2,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "751",
+        "label": "Healthcare",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 4,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "758",
+        "label": "High Tech",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "706",
+        "label": "Industrial Design",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "764",
+        "label": "Insurance",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 5,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "707",
+        "label": "Interior Design",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 4,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "708",
+        "label": "IT Services",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 4,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "709",
+        "label": "Legal",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 5,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "710",
+        "label": "Management Consulting",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "750",
+        "label": "Manufacturing",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 4,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "711",
+        "label": "Marketing",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 2,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "756",
+        "label": "Non-Profit",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "766",
+        "label": "Oil & Gas",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 2,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "762",
+        "label": "Pharmaceuticals",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 1,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "765",
+        "label": "Public Sector",
+        "maxCpl": "305"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "754",
+        "label": "Real Estate",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "713",
+        "label": "Research & Development",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 2,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "753",
+        "label": "Retail",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 5,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "759",
+        "label": "Software / Technology",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 4,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "760",
+        "label": "Telecommunications",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "752",
+        "label": "Transportation & Logistics",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "767",
+        "label": "Utilities",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 4,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "761",
+        "label": "Web Design / Development",
+        "maxCpl": "320"
+    },
+    {
+        "currentPosition": 3,
+        "highestBid": "320",
+        "bid": 320,
+        "id": "714",
+        "label": "Other",
+        "maxCpl": "320"
+    }
+]

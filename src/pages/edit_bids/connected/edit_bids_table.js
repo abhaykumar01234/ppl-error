@@ -10,7 +10,8 @@ import NumberFormat from 'react-number-format';
 import { DELETE_CHANGED_BID } from '@ppl/redux/reducers/changed_bids_reducer';
 import { InputField, TableRowAccordion, ToolTip } from '@arubaito';
 import TableLoader from '../../../utils/TableLoader';
-import './edit_bids_table.scss';
+import s from './edit_bids_table.module.scss';
+import cx from 'classnames'
 
 const FALLBACK = '-';
 
@@ -27,7 +28,7 @@ const returnSegmentBidsRow = (segment, segmentIndex, sizeId, sizeKey, changedBid
   return (
     <tr key={segment.id}>
       <td className="gdm-w-1" />
-      <td className="gdm-w-1 gdm-keep-border gdm-p-none">{hasSegmentBidChange && <div moduleClassName="icon-filled-circle" />}</td>
+      <td className="gdm-w-1 gdm-keep-border gdm-p-none">{hasSegmentBidChange && <div className={s["icon-filled-circle"]} />}</td>
       <td className="gdm-w-7 gdm-p-left-none gdm-p-right-none gdm-text-left">{segment.label}</td>
       <td className="gdm-w-4 gdm-allow-overflow">
         <InputField
@@ -40,7 +41,7 @@ const returnSegmentBidsRow = (segment, segmentIndex, sizeId, sizeKey, changedBid
                 status={status}
                 name={segment.label}
                 autoComplete="off"
-                value={bidAmount}
+                value={String(bidAmount)}
                 onFocus={() => {
                   dispatch(
                     setSelectedBid({
@@ -120,7 +121,7 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
   // by default we need a minimum of 2 rows to show the accordion, added +1 extra for the table row loader.
 
   const BidChangeCircle = () => {
-    if (!hasError && bidAmount !== size.bidAmount) return <div moduleClassName="icon-filled-circle" />;
+    if (!hasError && bidAmount !== size.bidAmount) return <div className={s["icon-filled-circle"]} />;
 
     let hasHollowCircle = false;
     const changedBidKeys = Object.keys(changedBids);
@@ -135,7 +136,7 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
         }
       }
     }
-    return hasHollowCircle ? <div moduleClassName="icon-hollow-circle" /> : <></>;
+    return hasHollowCircle ? <div className={s["icon-hollow-circle"]} /> : <></>;
   };
 
   const { sizeDetail, setSizeDetail } = sizeState;
@@ -160,7 +161,7 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
 
   const toggleRowButton = (onToggle) =>
     activeProduct.advancedBiddingAvailable ? (
-      <TableRowAccordion.ToggleButton moduleClassName="no-outline" onClick={() => onClickToggleButton(onToggle)}>
+      <TableRowAccordion.ToggleButton className={s["no-outline"]} onClick={() => onClickToggleButton(onToggle)}>
         {size.label}
       </TableRowAccordion.ToggleButton>
     ) : (
@@ -169,7 +170,7 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
 
   return (
     <TableRowAccordion
-      moduleClassName="table-row-accordion"
+      className={s["table-row-accordion"]}
       key={sizeKey}
       rowsLength={rowLength}
       render={(onToggle, open) => (
@@ -190,7 +191,7 @@ const returnAccordionRow = (size, sizeIndex, segments, changedBids, dispatch, pr
                       status={status}
                       name={size.label}
                       autoComplete="off"
-                      value={bidAmount}
+                      value={String(bidAmount)}
                       data-cy="bid-input"
                       onFocus={() => {
                         dispatch(
@@ -282,7 +283,7 @@ const Table = ({ productId }) => {
   if (!Object.keys(sizes).length || !activeProduct) return null;
 
   return (
-    <table className="gdm-table gdm-table-reset gdm-table-inputs gdm-text-center gdm-w-24" moduleClassName="edit-bids-table">
+    <table className={cx("gdm-table gdm-table-reset gdm-table-inputs gdm-text-center gdm-w-24", s["edit-bids-table"])}>
       <thead>
         <tr>
           <th className="gdm-w-1 gdm-keep-border gdm-p-none" />

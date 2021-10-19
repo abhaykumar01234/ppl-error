@@ -7,8 +7,9 @@ import Routes from '@ppl/routes';
 import Alerts from '@ppl/pages/alerts';
 
 const PPL = () => {
+
   const appRoutes = (
-    <div moduleClassName="ppl-wrapper" id="ppl-anchor">
+    <div className='ppl-wrapper' id="ppl-anchor">
       <div className="gdm-relative gdm-m-top-md gdm-m-bottom-md">
         <Routes />
         <Alerts />

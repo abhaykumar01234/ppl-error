@@ -9,7 +9,8 @@ import Table from './edit_bids_table';
 import AuctionBids from './edit_bids_auction_bids';
 import AuctionBidsPlaceholder from '../components/auction_bids_placeholder';
 import SegmentAuctionBids from '../components/segment_auction_bids';
-import './edit_bids.scss';
+import s from './edit_bids.module.scss';
+import cx from 'classnames'
 
 const FALLBACK = '';
 
@@ -64,13 +65,13 @@ const EditPage = () => {
         <span className="gdm-block gdm-heading-lg">{getMarketName(productId)}</span>
         <span className="gdm-block gdm-title">{getProductName(productId)}</span>
       </header>
-      <div className="gdm-grid gdm-m-top-lg" moduleClassName="grid-wrapper">
+      <div className={cx("gdm-grid gdm-m-top-lg", s["grid-wrapper"])}>
         <div className="gdm-row">
           <div className="gdm-col gdm-no-p gdm-col-14">
             <Table productId={productId} />
           </div>
           <div className="gdm-col gdm-no-p gdm-col-9 gdm-col-offset-1">
-            <div moduleClassName="right-pane">
+            <div className={s["right-pane"]}>
               <AuctionView />
             </div>
           </div>

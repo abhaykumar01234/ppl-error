@@ -1,8 +1,7 @@
 const path = require('path');
-// const { ProvidePlugin } = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -12,15 +11,9 @@ module.exports = {
       '@arubaito': '@capterra/arubaito',
       '@tokens': '@capterra/arubaito/dist',
       '@ppl': path.resolve(__dirname, 'src/'),
-      '@vp-components': '@capterra/vp-components'
+      '@vp-components': '@capterra/vp-components',
     },
     extensions: ['.js', '.jsx', '.scss'],
-    // fallback: {
-    //   "stream": require.resolve("stream-browserify"),
-    //   "zlib": require.resolve("browserify-zlib"),
-    //   "util": require.resolve("util/"),
-    //   "buffer": require.resolve("buffer/")
-    // } 
   },
   module: {
     rules: [
@@ -83,12 +76,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : 'ppl.min.css'
     }),
-    // new NodePolyfillPlugin({
-		// 	excludeAliases: ["console"]
-		// })
-//     new ProvidePlugin({
-//       Buffer: ['buffer', 'Buffer'],
-//       process: 'process/browser',
-//  }),
+    new NodePolyfillPlugin({
+			excludeAliases: ["console"]
+		}),
   ]
 };

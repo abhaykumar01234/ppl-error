@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './overall_campaign_summary.scss';
+import s from './overall_campaign_summary.module.scss';
+import cx from 'classnames'
 
 const FALLBACK = '-';
 
 const OverallCampaignSummary = ({ metrics: { leadsWon, recommendationOpportunities, recommendationRate } }) => (
-  <div className="gdm-grid" moduleClassName="overall-campaign-summary">
+  <div className={cx("gdm-grid", s["overall-campaign-summary"])}>
     <div className="gdm-row gdm-flex">
       <div className="gdm-text-left gdm-col gdm-col-10 gdm-m-top-lg">
         <span className="gdm-label">Overall Campaign Summary</span>

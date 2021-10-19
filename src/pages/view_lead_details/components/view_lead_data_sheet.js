@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ToolTip } from '@arubaito';
 import leadDetailsHash from '../config/lead_detail_fields';
-import './view_lead_data_sheet.scss';
+import s from './view_lead_data_sheet.module.scss';
+import cx from 'classnames';
 
 const FALLBACK = '-';
 
 const DataSheet = ({ lead }) => (
-  <div className="gdm-grid" moduleClassName="lead-content-align">
+  <div className={cx("gdm-grid", s["lead-content-align"])}>
     <h1 className="gdm-title">Lead Details</h1>
     <Link
       className="gdm-link-default"
@@ -23,8 +24,8 @@ const DataSheet = ({ lead }) => (
           <span className="gdm-heading-lg">{heading}</span>
         </div>
         <div className="gdm-flex">
-          {leadData.map(colData => (
-            <div className="gdm-col gdm-col-8 gdm-m-right-xl">
+          {leadData.map((colData, idx) => (
+            <div key={idx} className="gdm-col gdm-col-8 gdm-m-right-xl">
               {colData.map(({
                 title, key, toolTip, toolTipKey, nested, getNestedValue,
               }) => (
@@ -36,7 +37,7 @@ const DataSheet = ({ lead }) => (
                       <ToolTip
                         targetId="leadDetailsTitle"
                         placement="top"
-                        trigger={<span className="gdm-icon gdm-icon-info gdm-m-top-sm gdm-m-left-xxs" moduleClassName="icon-custom-size" />}
+                        trigger={<span className={cx("gdm-icon gdm-icon-info gdm-m-top-sm gdm-m-left-xxs", s["icon-custom-size"])} />}
                       >
                         {lead[toolTipKey]}
                       </ToolTip>

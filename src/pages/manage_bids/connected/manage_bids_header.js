@@ -60,7 +60,10 @@ const Header = ({ markets, vendor, selectedMarket }) => {
 
 Header.propTypes = {
   markets: PropTypes.arrayOf(PropTypes.object).isRequired,
-  vendor: PropTypes.shape({ name: PropTypes.string, id: PropTypes.string }).isRequired,
+  vendor: PropTypes.shape({ name: PropTypes.string, id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]), }).isRequired,
   selectedMarket: PropTypes.shape({ marketId: PropTypes.number, name: PropTypes.string }).isRequired,
 };
 

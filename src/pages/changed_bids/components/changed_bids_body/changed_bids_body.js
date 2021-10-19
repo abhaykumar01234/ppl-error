@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './changed_bids_body.scss';
+import s from './changed_bids_body.module.scss';
 
 const ChangedBidsBody = ({ children }) => (
   <div className="gdm-w-18">
-    <div moduleClassName="scrollContents">{children}</div>
+    <div className={s.scrollContents}>{children}</div>
   </div>
 );
 

@@ -6,7 +6,8 @@ import { PUSH_ALERT } from '@ppl/redux/reducers/alerts';
 import saveBids from '@ppl/redux/actions/edit_bids/save_bids';
 import CancelModal from '@ppl/pages/edit_bids/components/cancel_modal';
 import { Button, LoadingOverlay } from '@arubaito';
-import './changed_bids_header.scss';
+import s from './changed_bids_header.module.scss';
+import cx from 'classnames';
 
 const ChangedBidsHeader = ({ children }) => {
   const [isSubmitting, setSubmit] = useState(false);
@@ -33,16 +34,16 @@ const ChangedBidsHeader = ({ children }) => {
   };
 
   return (
-    <div className="gdm-grid" moduleClassName="changed-bids-header" data-cy="drawer">
-      <div className="gdm-row" moduleClassName="changed-bids-header-wrapper">
+    <div className={cx("gdm-grid", s["changed-bids-header"])} data-cy="drawer">
+      <div className={cx("gdm-row", s["changed-bids-header-wrapper"])}>
         <div className="gdm-col gdm-col-12">
           {children}
         </div>
         <div className="gdm-col gdm-col-12">
-          <div className="gdm-grid" moduleClassName="button-stack">
+          <div className={cx("gdm-grid", s["button-stack"])}>
             <div className="gdm-row">
               <div className="gdm-col gdm-col-24">
-                <div moduleClassName="overlay-wrapper">
+                <div className={s["overlay-wrapper"]}>
                   {isSubmitting && <LoadingOverlay onClick={e => e.stopPropagation()} />}
                   <Button
                     data-cy="apply-bids"

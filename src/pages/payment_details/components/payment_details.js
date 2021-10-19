@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './payment_details.scss';
+import s from './payment_details.module.scss';
+import cx from 'classnames'
 
 const PaymentDetails = ({ vendorName, paymentInfo }) => {
   const { contact, vendorId, creationDay, name } = paymentInfo || {};
 
   return (
     <section className="gdm-flex">
-      <address className="gdm-paragraph-sm" moduleClassName="details">
+      <address className={cx("gdm-paragraph-sm", s.details)}>
         <p>Software Advice</p>
         <p>P.O. Box 733143</p>
         <p>Dallas, TX 75373-3143</p>
       </address>
-      <div className="gdm-paragraph-sm" moduleClassName="details">
+      <div className={cx("gdm-paragraph-sm", s.details)}>
         <p>Received From: {vendorName || ''}</p>
         <p>Business Contact: {contact ? contact.fullName : ''}</p>
         <p>Customer #: {vendorId || ''}</p>

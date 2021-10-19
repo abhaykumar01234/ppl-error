@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { CLEAR_CHANGED_BID } from '@ppl/redux/reducers/changed_bids_reducer';
 import { Button, Modal } from '@arubaito';
-import './save_bid_modal.scss';
+import s from './save_bid_modal.module.scss';
 
 export default function SaveBidModal({ onClosed }) {
   const history = useHistory();
@@ -31,7 +31,7 @@ export default function SaveBidModal({ onClosed }) {
             <p className="gdm-paragraph-lg" />
           </Modal.Body>
           <Modal.Footer>
-            <div moduleClassName="footer-wrapper">
+            <div className={s["footer-wrapper"]}>
               {continueBtn}
               {cancelBtn(close)}
             </div>

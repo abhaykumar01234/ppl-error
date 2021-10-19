@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import { SHIFT_ALERT } from '@ppl/redux/reducers/alerts';
 import { CLEAR_CHANGED_BID } from '@ppl/redux/reducers/changed_bids_reducer';
 import { Button, Modal } from '@arubaito';
-import './cancel_modal.scss';
+import s from './cancel_modal.module.scss';
+import cx from 'classnames'
 
 const CancelModal = () => {
   const dispatch = useDispatch();
@@ -16,10 +17,10 @@ const CancelModal = () => {
       onClosed={() => dispatch({ type: SHIFT_ALERT })}
     >
       {close => (
-        <div moduleClassName="modal-wrapper" data-cy="cancel-edit-bid">
+        <div className={s["modal-wrapper"]} data-cy="cancel-edit-bid">
           <Modal.Header>
             <span className="gdm-icon gdm-icon-md gdm-icon-alert-error" />
-            <span className="gdm-heading-lg" moduleClassName="heading-label">Unsaved Bids</span>
+            <span className={cx("gdm-heading-lg", s["heading-label"])}>Unsaved Bids</span>
             <Modal.Close onClick={close} />
           </Modal.Header>
           <Modal.Body>

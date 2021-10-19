@@ -6,15 +6,16 @@ import { pdf } from '@react-pdf/renderer';
 import { AlertMessage, Button } from '@arubaito';
 import { blobToFile } from '@ppl/utils/download';
 import setIsLoading from '@ppl/redux/actions/set_is_loading';
-import './export_buttons.scss';
+import s from './export_buttons.module.scss';
+import cx from 'classnames'
 
 const ExportButtons = ({ children }) => {
   const [error, setError] = useState({ isError: false, message: null });
 
   return (
     <div className="gdm-m-bottom-md">
-      <div className="gdm-flex gdm-m-top-md" moduleClassName="export-wrapper">
-        <div className="gdm-flex gdm-m-bottom-sm" moduleClassName="button-wrapper">
+      <div className={cx("gdm-flex gdm-m-top-md", s["export-wrapper"])}>
+        <div className={cx("gdm-flex gdm-m-bottom-sm", s["button-wrapper"])}>
           {Children.map(children, (child, i) => (
             <div key={i}>{cloneElement(child, { setError })}</div>
           ))}

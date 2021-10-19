@@ -1,0 +1,35 @@
+[
+  {
+    "billDate": "07/23/21",
+    "billId": 1234,
+    "invoiceMonth": 7,
+    "invoiceYear": 2021,
+    "name": "Invoice - July 2021",
+    "type": "Invoice",
+    "balance": 4467.450000000006,
+    "invoices": 4467.45,
+    "paymentsAndCredits": null
+  },
+  {
+    "billDate": "07/16/21",
+    "billId": 1234534,
+    "invoiceMonth": 0,
+    "invoiceYear": 0,
+    "name": "Payment - ACH #ASD123ASD",
+    "balance": 4467.450000000006,
+    "invoices": null,
+    "paymentsAndCredits": 10225.15,
+    "type": "Payment"
+  },
+  {
+    "billDate": "09/23/18",
+    "billId": 123456,
+    "invoiceMonth": 8,
+    "invoiceYear": 2018,
+    "name": "Invoice - Aug 2018",
+    "balance": 4467.450000000006,
+    "invoices": 4467.45,
+    "paymentsAndCredits": 10225.15,
+    "type": "Invoice"
+  }
+]

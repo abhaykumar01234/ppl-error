@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import './invoice_table.scss';
+import s from './invoice_table.module.scss';
 
 const InvoiceTable = ({ showScrollable, children }) => (
   <table className="gdm-table gdm-table-reset gdm-table-alternating gdm-text-center gdm-w-24">
@@ -14,7 +14,7 @@ const InvoiceTable = ({ showScrollable, children }) => (
         <th className="gdm-w-4 gdm-text-right">Balance</th>
       </tr>
     </thead>
-    <tbody className={cx('gdm-relative ', { 'gdm-block gdm-scroll-shadow': showScrollable })} moduleClassName="table-content">
+    <tbody className={cx('gdm-relative ', { 'gdm-block gdm-scroll-shadow': showScrollable }, s["table-content"])}>
       {children}
     </tbody>
   </table>

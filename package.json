@@ -7,7 +7,15 @@
     "start": "env NODE_ENV=development webpack-dev-server --open --config webpack.dev.js",
     "build": "env NODE_ENV=production webpack --config webpack.prod.js",
     "analyze": "env NODE_ENV=production webpack --config webpack.analyze.js",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "deploy:staging": "npm run build-prod && aws s3 cp dist s3://vp-ppl-qa --recursive --profile search-staging",
+    "lint": "../../node_modules/.bin/eslint src/**/*.js",
+    "lint:fix": "../../node_modules/.bin/eslint src -c .eslintrc.json --fix --ext .js,.jsx",
+    "cy:run": "./node_modules/.bin/cypress run",
+    "cy:open": "./node_modules/.bin/cypress open",
+    "test:unit": "echo \"No unit tests\"",
+    "test:integration": "start-server-and-test start http-get://localhost:4002 cy:run",
+    "test": "npm run test:unit && npm run test:integration"
   },
   "keywords": [],
   "author": "Abhay Kumar",
@@ -18,7 +26,7 @@
     "@babel/plugin-transform-runtime": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
-    "@capterra/arubaito": "^2.0.21",
+    "@capterra/arubaito": "^2.0.20",
     "@capterra/vp-components": "^1.0.19",
     "babel-loader": "^8.2.2",
     "classnames": "^2.3.1",
@@ -45,6 +53,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-number-format": "^4.7.3",
     "react-popper": "^1.3.11",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
@@ -57,7 +66,7 @@
     "sass-loader": "^12.2.0",
     "start-server-and-test": "^1.14.0",
     "style-loader": "^3.3.0",
-    "webpack": "^5.58.2",
+    "webpack": "^5.21.2",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1",
@@ -69,11 +78,7 @@
     "react-dom": "16.14.0"
   },
   "dependencies": {
-    "@react-pdf/renderer": "^1.6.17",
-    "browserify-zlib": "^0.2.0",
-    "buffer": "^6.0.3",
-    "react-csv": "^2.0.3",
-    "stream-browserify": "^3.0.0",
-    "util": "^0.12.4"
+    "@react-pdf/renderer": "^2.0.20",
+    "react-csv": "^2.0.3"
   }
 }

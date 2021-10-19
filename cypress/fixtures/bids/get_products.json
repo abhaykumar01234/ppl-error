@@ -1,0 +1,38 @@
+[
+  {
+    "marketId": "14",
+    "productId": "110643",
+    "productLabel": "NetSuite - Budgeting and Forecasting",
+    "advancedBiddingAvailable": false,
+    "productBiddingAvailable": true,
+    "productBiddingNotAvailableReason": "",
+    "status": "active"
+  },
+  {
+    "marketId": "8",
+    "productId": "2282",
+    "productLabel": "NetSuite Professional Services Automation - Project Management",
+    "advancedBiddingAvailable": false,
+    "productBiddingAvailable": true,
+    "productBiddingNotAvailableReason": "",
+    "status": "active"
+  },
+  {
+    "marketId": "9",
+    "productId": "12345",
+    "productLabel": "NetSuite OpenAir - Project Management",
+    "advancedBiddingAvailable": true,
+    "productBiddingAvailable": true,
+    "productBiddingNotAvailableReason": "",
+    "status": "active"
+  },
+  {
+    "marketId": "4",
+    "productId": "93409",
+    "productLabel": "NetSuite - Retail (non-single store)",
+    "advancedBiddingAvailable": false,
+    "productBiddingAvailable": true,
+    "productBiddingNotAvailableReason": "",
+    "status": "active"
+  }
+]

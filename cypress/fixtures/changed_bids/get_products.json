@@ -1,0 +1,11 @@
+[
+    {
+        "marketId": "4",
+        "productId": "12345",
+        "productLabel": "Webnesday.com",
+        "advancedBiddingAvailable": true,
+        "productBiddingAvailable": true,
+        "productBiddingNotAvailableReason": "",
+        "status": "active"
+    }
+  ]

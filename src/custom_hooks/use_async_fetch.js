@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import authFetch from '../actions/auth_fetch';
+import authFetch from '@ppl/redux/actions/auth_fetch';
 
 const getFetchOptions = (opts) => {
   const fetchOption = { url: '', option: {} };

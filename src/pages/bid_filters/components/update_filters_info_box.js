@@ -1,12 +1,13 @@
 import React from 'react';
 import { Button } from '@capterra/arubaito';
-import '../bid_filters.scss';
+import s from '../bid_filters.module.scss';
+import cx from 'classnames'
 
 const mailSubject = 'Update PPL Bid Filters';
 
 const UpdateFiltersInfoBox = ({ representative }) => {
   return (
-    <div moduleClassName="update-filters-box">
+    <div className={s["update-filters-box"]}>
       <div className="gdm-heading-lg">Update Filters</div>
       <div className="gdm-paragraph-sm">
         Contact your account manager, {representative.name} - {representative.email}, to edit your bidding filters.
@@ -15,8 +16,7 @@ const UpdateFiltersInfoBox = ({ representative }) => {
       <Button
         small
         variant="secondary"
-        className="gdm-w-24 gdm-m-top-xs"
-        moduleClassName="update-filters-btn"
+        className={cx("gdm-w-24 gdm-m-top-xs", s["update-filters-btn"])}
         onClick={() => window.open(`mailto:${representative.email}?subject=${mailSubject}`, '_blank')}
       >
         Email Account Manager

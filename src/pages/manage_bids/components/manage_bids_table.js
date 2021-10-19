@@ -5,7 +5,8 @@ import { VpComponents } from '@vp-components';
 import { TableRowAccordion, ToolTip } from '@arubaito';
 import OverallCampaignSummary from './overall_campaign_summary';
 import TableLoader from '../../../utils/TableLoader';
-import './manage_bids_table.scss';
+import s from './manage_bids_table.module.scss';
+import cx from 'classnames';
 
 const COL_FALLBACK = '-';
 
@@ -63,7 +64,7 @@ const Table = ({ products, sizes, metrics, isLoading, isFetchError }) => {
                 <td data-cy="bids-body-label">
                   <Link className="gdm-link-default default-bid-link" to={`/vp/ppl/bids/edit/${String(productId)}`}>
                     <span className="bid-value">{VpComponents.formatCurrency(row.bidAmount, null, 'Place bid')} </span>
-                    <span className="gdm-icon gdm-icon-sm gdm-icon-edit" moduleClassName="icon-align" />
+                    <span className={cx("gdm-icon gdm-icon-sm gdm-icon-edit", s["icon-align"])} />
                   </Link>
                 </td>
                 <td data-cy="bids-body-label">{VpComponents.formatNumber(row.customBidsCount)}</td>
@@ -80,7 +81,7 @@ const Table = ({ products, sizes, metrics, isLoading, isFetchError }) => {
 
   return (
     <>
-      <table className="gdm-table gdm-table-reset gdm-text-center gdm-w-24 gdm-z-index-default gdm-m-bottom-xxl" moduleClassName="manage-bids-table">
+      <table className={cx("gdm-table gdm-table-reset gdm-text-center gdm-w-24 gdm-z-index-default gdm-m-bottom-xxl", s["manage-bids-table"])}>
         <thead>
           <tr>
             <th data-cy="bids-header-label" className="gdm-text-left">

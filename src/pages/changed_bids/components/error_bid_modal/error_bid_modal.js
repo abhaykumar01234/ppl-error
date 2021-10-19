@@ -3,7 +3,8 @@ import PropType from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { CLEAR_CHANGED_BID } from '@ppl/redux/reducers/changed_bids_reducer';
 import { Button, Modal } from '@arubaito';
-import './error_bid_modal.scss';
+import s from './error_bid_modal.module.scss';
+import cx from 'classnames';
 
 export default function ErrorBidModal({ onClosed }) {
   const dispatch = useDispatch();
@@ -11,10 +12,10 @@ export default function ErrorBidModal({ onClosed }) {
   return (
     <Modal open onClosed={onClosed}>
       {close => (
-        <div moduleClassName="modal-wrapper">
+        <div className={s["modal-wrapper"]}>
           <Modal.Header>
             <span className="gdm-icon gdm-icon-md gdm-icon-alert-error" />
-            <span className="gdm-heading-lg" moduleClassName="heading-label">Unsaved Bids</span>
+            <span className={cx("gdm-heading-lg", s["heading-label"])}>Unsaved Bids</span>
             <Modal.Close onClick={close} />
           </Modal.Header>
           <Modal.Body>
@@ -23,7 +24,7 @@ export default function ErrorBidModal({ onClosed }) {
             </p>
           </Modal.Body>
           <Modal.Footer>
-            <div moduleClassName="footer-wrapper">
+            <div className={s["footer-wrapper"]}>
               <Button className="gdm-m-top-sm" variant="primary" onClick={close}>
                 Edit Bids
               </Button>

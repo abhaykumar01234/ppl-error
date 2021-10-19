@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './pending_changes.scss';
+import s from './pending_changes.module.scss';
 
 export default function PendingChanges({ count }) {
   return (
-    <div moduleClassName="pending-panel">
-      <div moduleClassName="pending-number">{count}</div>
-      <div moduleClassName="pending-text">
+    <div className={s["pending-panel"]}>
+      <div className={s["pending-number"]}>{count}</div>
+      <div className={s["pending-text"]}>
         {`Pending Change${count === 1 ? '' : 's'}`}
       </div>
     </div>

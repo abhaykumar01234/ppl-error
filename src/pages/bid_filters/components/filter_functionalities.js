@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import CheckboxView from './checkbox_view';
 import RadioButtonView from './radio_button_view';
 import { FORM_CONTROL_LABEL_TEXT, RADIO_BUTTON_OPTIONS } from '../config/constants';
-import '../bid_filters.scss';
+import s from '../bid_filters.module.scss';
+import cx from 'classnames';
 
 const FilterFunctionalities = ({ functionalities }) => {
   if (functionalities.length === 0) return null;
@@ -25,7 +26,7 @@ const FilterFunctionalities = ({ functionalities }) => {
               {functionality.features.length > 0 && (
                 <>
                   <hr />
-                  <div className="gdm-m-top-xs" moduleClassName="scrollable-checkbox-view">
+                  <div className={cx("gdm-m-top-xs", s["scrollable-checkbox-view"])}>
                     <CheckboxView items={functionality.features} />
                   </div>
                 </>

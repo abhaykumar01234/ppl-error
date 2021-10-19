@@ -2,7 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PUSH_ALERT } from '@ppl/redux/reducers/alerts';
 import ContactAdvisorModal from './contact_advisor_modal';
-import './auction_bids_placeholder.scss';
+import s from './auction_bids_placeholder.module.scss';
+import cx from 'classnames'
 
 const AuctionBidsPlaceholder = () => {
   const { representative } = useSelector(state => state.vendor);
@@ -14,8 +15,7 @@ const AuctionBidsPlaceholder = () => {
       role="button"
       tabIndex="0"
       onKeyUp={() => {}}
-      className="gdm-link-default"
-      moduleClassName="contact-link"
+      className={cx("gdm-link-default", s["contact-link"])}
       data-cy="contact-link"
       onClick={() => (
         dispatch({
@@ -28,7 +28,7 @@ const AuctionBidsPlaceholder = () => {
     </span>
   );
   return (
-    <div moduleClassName="auction-bids-placeholder-wrapper">
+    <div className={s["auction-bids-placeholder-wrapper"]}>
       <span className="gdm-icon gdm-icon-xxl gdm-icon-target" />
       <p className="gdm-block gdm-paragraph-lg gdm-text-center">
         {
